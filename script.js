@@ -326,7 +326,7 @@ function initHeroMotion() {
     {
       activeNode: 0,
       phase: 'STAGE 01',
-      status: '1. Ingesting Multi-Omic & Clinical Streams',
+      status: '1. Ingesting Protein & Clinical Data Streams',
       pipeline: 'INGESTION ACTIVE'
     },
     {

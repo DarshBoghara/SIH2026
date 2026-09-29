@@ -82,10 +82,10 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
 
-  /* Typography */
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Typography System — Professional Research-Grade Stacks */
+  --font-display: "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 
   /* Scientific Motion Easing Curves */
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
@@ -187,7 +187,7 @@ img {
 .biosync-loader {
   position: fixed;
   inset: 0;
-  background: #F0FDF4;
+  background: var(--bg-deep);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -205,86 +205,65 @@ img {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 440px;
-  width: 90%;
-  padding: 36px 32px;
-  background: #FFFFFF;
-  border: 1px solid #D1FAE5;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px -15px rgba(6, 78, 59, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.08);
+  max-width: 380px;
+  padding: var(--sp-24);
 }
 .loader-branding {
   font-family: var(--font-display);
-  font-size: 2.4rem;
-  font-weight: 800;
+  font-size: 2.2rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 20px;
+  margin-bottom: var(--sp-16);
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  line-height: 1;
 }
-.loader-bio {
-  color: #064E3B !important;
-  font-weight: 800;
-}
+.loader-bio { color: #FFFFFF; }
 .loader-sync {
-  color: #059669 !important;
-  font-weight: 800;
-  text-shadow: none;
+  color: var(--cyan);
+  text-shadow: 0 0 16px var(--cyan-glow);
 }
 
 .loader-bar-wrap {
-  width: 100%;
-  max-width: 280px;
-  height: 6px;
-  background: #E2FBE8;
-  border: 1px solid #D1FAE5;
+  width: 240px;
+  height: 2px;
+  background: rgba(148, 163, 184, 0.15);
   border-radius: var(--radius-full);
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: var(--sp-16);
   position: relative;
 }
 .loader-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #059669 0%, #10B981 100%);
-  border-radius: var(--radius-full);
-  box-shadow: 0 0 10px rgba(5, 150, 105, 0.35);
+  background: linear-gradient(90deg, var(--cyan) 0%, var(--electric-blue) 60%, var(--violet) 100%);
+  box-shadow: 0 0 10px var(--cyan);
   transition: width 0.08s linear;
 }
 
 .loader-status-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  gap: var(--sp-8);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #064E3B !important;
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
+  font-size: 0.76rem;
+  color: var(--cyan);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--sp-8);
 }
 .loader-telemetry-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: var(--radius-full);
-  background: #059669;
-  box-shadow: 0 0 8px rgba(5, 150, 105, 0.6);
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
   animation: pulse-dot 1s infinite alternate;
-  flex-shrink: 0;
-}
-.loader-status-text {
-  color: #064E3B !important;
-  font-weight: 700;
 }
 .loader-sub-telemetry {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #047857 !important;
-  letter-spacing: 0.06em;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
 }
 
 /* ── 4. AMBIENT CURSOR GLOW (DESKTOP) ── */
@@ -6107,42 +6086,560 @@ table tr:hover td,
   margin-top: 14px !important;
 }
 
-/* 6. High-Contrast Loader Theme Overrides */
-#biosync-loader {
-  background: #F0FDF4 !important;
+/* ─────────────────────────────────────────────────────────────
+   Protein Data Ribbon Visual & Reference Links
+───────────────────────────────────────────────────────────── */
+.protein-ribbon-canvas {
+  width: 100px;
+  height: 40px;
+  display: block;
 }
-#biosync-loader .loader-container {
-  background: #FFFFFF !important;
-  border: 1px solid #D1FAE5 !important;
-  box-shadow: 0 20px 45px -15px rgba(6, 78, 59, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.08) !important;
+
+.protein-ribbon-backbone {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.45));
+  animation: proteinPulse 4s ease-in-out infinite alternate;
 }
-#biosync-loader .loader-branding .loader-bio {
+
+.protein-ribbon-glow {
+  fill: none;
+  stroke: var(--electric-blue);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 6;
+  opacity: 0.7;
+  animation: proteinDash 8s linear infinite;
+}
+
+.protein-residue-node {
+  fill: var(--cyan);
+  filter: drop-shadow(0 0 6px var(--cyan));
+}
+
+@keyframes proteinPulse {
+  0% { opacity: 0.75; stroke-width: 2; }
+  100% { opacity: 1; stroke-width: 2.6; }
+}
+
+@keyframes proteinDash {
+  to { stroke-dashoffset: -40; }
+}
+
+.ref-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+  margin-top: var(--sp-12);
+}
+
+.ref-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--cyan);
+  text-decoration: none;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  transition: all var(--transition-fast);
+}
+
+.ref-link:hover {
+  background: rgba(34, 211, 238, 0.2);
+  border-color: var(--cyan);
+  color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BIOSYNC MASTER RESEARCH-GRADE TYPOGRAPHY SYSTEM & VISUAL POLISH
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 1. Global Typography Foundation */
+body {
+  font-family: var(--font-body) !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+  color: #334D41 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* 2. Headings Hierarchy (Space Grotesk) */
+h1, h2, h3, h4, h5, h6,
+.section-title, .hero-title, .card-title,
+.sim-header h3, .triad-title, .f-card h4, .cm-header h4,
+.team-name, .ref-content h4, .dist-title, .edu-title,
+.subsection-title, .table-subtitle, .arch-layer-header h3,
+.qml-tab-title, .qml-model-card h3 {
+  font-family: var(--font-display) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
   color: #064E3B !important;
-  -webkit-text-fill-color: #064E3B !important;
-  font-weight: 800 !important;
 }
-#biosync-loader .loader-branding .loader-sync {
-  color: #059669 !important;
-  -webkit-text-fill-color: #059669 !important;
-  font-weight: 800 !important;
-  text-shadow: none !important;
-}
-#biosync-loader .loader-bar-wrap {
-  background: #E2FBE8 !important;
-  border: 1px solid #D1FAE5 !important;
-}
-#biosync-loader .loader-progress-bar {
-  background: linear-gradient(90deg, #059669 0%, #10B981 100%) !important;
-  box-shadow: 0 0 10px rgba(5, 150, 105, 0.35) !important;
-}
-#biosync-loader .loader-status-text {
-  color: #064E3B !important;
-  -webkit-text-fill-color: #064E3B !important;
+
+/* Hero Title: large, bold, high contrast, Space Grotesk, max 2-3 lines */
+.hero-title {
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem) !important;
   font-weight: 700 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+  max-width: 920px !important;
+  margin-inline: auto !important;
 }
-#biosync-loader .loader-sub-telemetry {
-  color: #047857 !important;
-  -webkit-text-fill-color: #047857 !important;
+
+.hero-tagline {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem) !important;
+  line-height: 1.35 !important;
+  color: #059669 !important;
+  max-width: 820px !important;
+  margin-inline: auto !important;
+  margin-bottom: var(--sp-16) !important;
+}
+
+/* Major Section Titles */
+.section-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin-bottom: var(--sp-12) !important;
+}
+
+.subsection-title {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  margin-bottom: var(--sp-12) !important;
+}
+
+/* Section Description & Long Copy: controlled max-width, comfortable line-height */
+.section-description {
+  font-family: var(--font-body) !important;
+  font-size: clamp(0.96rem, 1.1vw, 1.05rem) !important;
+  line-height: 1.68 !important;
+  color: #334D41 !important;
+  max-width: 820px !important;
+  margin-inline: auto !important;
+  margin-bottom: var(--sp-32) !important;
+}
+
+.hero-description {
+  font-family: var(--font-body) !important;
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem) !important;
+  line-height: 1.65 !important;
+  color: #334D41 !important;
+  max-width: 780px !important;
+  margin-inline: auto !important;
+}
+
+/* 3. Navigation Typography */
+.nav-links a, .nav-link, .nav-dropdown-trigger {
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  color: #334D41 !important;
+  padding: 8px 12px !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.nav-links a:hover, .nav-link:hover, .nav-dropdown-trigger:hover,
+.nav-has-dropdown:hover .nav-dropdown-trigger {
+  color: #059669 !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+}
+
+.nav-links a.active, .nav-link.active, .nav-dropdown-trigger.has-active {
+  color: #059669 !important;
+  font-weight: 600 !important;
+  background: rgba(5, 150, 105, 0.12) !important;
+}
+
+.nav-logo {
+  font-family: var(--font-display) !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: #064E3B !important;
+}
+
+.nav-cta {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  padding: 8px 16px !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.dropdown-item-title {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem !important;
+  color: #064E3B !important;
+}
+
+.dropdown-item-desc {
+  font-family: var(--font-body) !important;
+  font-size: 0.82rem !important;
+  line-height: 1.4 !important;
+  color: #64748B !important;
+}
+
+/* 4. Button Typography */
+.btn {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.4 !important;
+  padding: 12px 24px !important;
+  border-radius: var(--radius-sm) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #059669 !important;
+  outline-offset: 3px !important;
+}
+
+/* 5. Card Typography */
+.glass-card {
+  border-radius: var(--radius-md) !important;
+  padding: var(--card-pad) !important;
+}
+
+.card-title, .problem-card h3, .triad-title, .f-card h4, .cm-header h4, .benefit-card h4 {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 1.15rem !important;
+  line-height: 1.3 !important;
+  margin-bottom: var(--sp-12) !important;
+}
+
+.card-prop, .card-body p, .problem-card p, .triad-card p, .benefit-card p, .f-card p, .cm-body p {
+  font-family: var(--font-body) !important;
+  font-weight: 400 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.62 !important;
+  color: #334D41 !important;
+}
+
+.card-prop strong {
+  font-weight: 600 !important;
+  color: #064E3B !important;
+}
+
+/* 6. Technical & Data Elements (JetBrains Mono) */
+code, pre, .font-mono,
+.plddt-val, .plddt-tag, .stat-num, .stat-unit,
+.cchain-node, .pnode-indicator, .pnode-tag,
+.arch-layer-index, .arch-layer-status-badge, .ref-num,
+.qstep, .pipeline-step-node[data-step]::before,
+.records-data-grid, .scanner-tag, .hud-meta-badge,
+.cm-tag, .btn-target-id, .strip-hud-badge,
+.team-role-tag, .logo-sub-tag,
+.node-subtag, .engine-stage-monitor .monitor-val,
+.sim-id-pill, .badge-target, .sim-plddt-pill {
+  font-family: var(--font-mono) !important;
+}
+
+/* Micro-Typography Normalization: Ensure all labels are crisp, clear and readable */
+.pnode-tag, .arch-layer-status-badge, .triad-role, .box-action-tag,
+.gateway-sub, .cm-tag, .btn-target-id, .strip-hud-badge, .team-role-tag,
+.scanner-tag, .hud-meta-badge, .logo-sub-tag, .node-subtag, .badge {
+  font-size: 0.74rem !important;
+  letter-spacing: 0.03em !important;
+  line-height: 1.25 !important;
+}
+
+/* 7. Architecture Diagram Typography */
+.arch-layer {
+  padding: 20px 24px !important;
+}
+
+.arch-layer-header h3 {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 1.2rem !important;
+  line-height: 1.25 !important;
+}
+
+.arch-layer-sub {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  font-size: 0.86rem !important;
+  color: #059669 !important;
+}
+
+.arch-layer-body p {
+  font-family: var(--font-body) !important;
+  font-size: 0.94rem !important;
+  line-height: 1.62 !important;
+  margin-bottom: var(--sp-12) !important;
+}
+
+.arch-tags span {
+  font-family: var(--font-body) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  padding: 4px 10px !important;
+}
+
+.cchain-node {
+  padding: 10px 18px !important;
+  font-size: 0.88rem !important;
   font-weight: 600 !important;
 }
+
+/* 8. Quantum Section Typography */
+.qml-card h3, .qml-tab-title {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 1.35rem !important;
+  letter-spacing: -0.01em !important;
+  color: #064E3B !important;
+}
+
+.qml-card .qml-meta {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  color: #059669 !important;
+}
+
+.qml-card p {
+  font-family: var(--font-body) !important;
+  font-size: 0.94rem !important;
+  line-height: 1.62 !important;
+}
+
+/* 9. Simulations Section Typography */
+.sim-header h3 {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 1.4rem !important;
+  color: #064E3B !important;
+}
+
+.sim-intro {
+  font-family: var(--font-body) !important;
+  font-size: 0.96rem !important;
+  line-height: 1.6 !important;
+  color: #334D41 !important;
+}
+
+.strip-label {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 0.94rem !important;
+  color: #064E3B !important;
+  margin-bottom: var(--sp-8) !important;
+}
+
+.strip-caption {
+  font-family: var(--font-body) !important;
+  font-size: 0.86rem !important;
+  line-height: 1.45 !important;
+  color: #334D41 !important;
+}
+
+.plddt-val {
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 2.2rem !important;
+  color: #059669 !important;
+}
+
+.plddt-tag {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: #475569 !important;
+}
+
+.plddt-explainer {
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  font-style: italic !important;
+  color: #475569 !important;
+}
+
+.sim-caption, .sim-closing-statement {
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  color: #334D41 !important;
+}
+
+.edu-title {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem !important;
+  color: #059669 !important;
+}
+
+.edu-list li {
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.55 !important;
+}
+
+/* 10. Research Results Metrics */
+.stat-card .stat-num {
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 2.2rem !important;
+  line-height: 1.1 !important;
+}
+
+.stat-card .stat-unit {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+}
+
+.stat-card .stat-label {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem !important;
+  color: #064E3B !important;
+}
+
+.stat-card .stat-desc {
+  font-family: var(--font-body) !important;
+  font-weight: 400 !important;
+  font-size: 0.86rem !important;
+  line-height: 1.55 !important;
+  color: #334D41 !important;
+}
+
+/* 11. Table Typography & Responsive Scrolling */
+.table-responsive {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.qml-table th, .bench-table th {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  text-transform: none !important;
+  letter-spacing: -0.01em !important;
+  padding: 12px 16px !important;
+  color: #064E3B !important;
+  white-space: nowrap !important;
+}
+
+.qml-table td, .bench-table td {
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.5 !important;
+  padding: 12px 16px !important;
+  color: #334D41 !important;
+}
+
+.qml-table td:first-child, .bench-table td:first-child {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  color: #064E3B !important;
+}
+
+.qml-table td:nth-child(n+2), .bench-table td:nth-child(n+2) {
+  font-family: var(--font-mono) !important;
+  font-weight: 500 !important;
+}
+
+.table-subtitle {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  color: #064E3B !important;
+  margin-bottom: var(--sp-12) !important;
+}
+
+/* 12. References Section Typography */
+.ref-card h4 {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.35 !important;
+  color: #064E3B !important;
+  margin-bottom: var(--sp-6) !important;
+}
+
+.ref-card p {
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
+  color: #334D41 !important;
+}
+
+.ref-num {
+  font-family: var(--font-mono) !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: #059669 !important;
+}
+
+/* 13. Team Section Typography */
+.team-name {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  color: #064E3B !important;
+}
+
+.team-role-tag {
+  font-family: var(--font-mono) !important;
+  font-size: 0.74rem !important;
+  font-weight: 600 !important;
+}
+
+/* 14. Image Presentation — Preserve Aspect Ratio & Quality */
+.gallery-img, .strip-img {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid #D1FAE5 !important;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+.lightbox-img {
+  max-width: 90vw !important;
+  max-height: 80vh !important;
+  object-fit: contain !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* 15. Responsive Typography Tuning */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
+  }
+  .section-title {
+    font-size: 1.75rem !important;
+  }
+  .subsection-title {
+    font-size: 1.3rem !important;
+  }
+  .section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
 
