@@ -1,0 +1,2535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioSync — Hybrid Quantum–Classical ML Platform for Early Disease Detection</title>
+  <meta name="description" content="BioSync: A proposed hybrid biomedical intelligence platform combining classical preprocessing, quantum machine learning, classical benchmarking, explainable AI, and complementary molecular analysis. Smart India Hackathon 2026 — PS 26139." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════ [0] PRE-FLIGHT SYSTEM LOADER (1.0–1.2s MAX) ═══════════════════ -->
+  <div id="biosync-loader" class="biosync-loader" aria-live="polite" aria-label="Loading BioSync Platform">
+    <div class="loader-container">
+      <div class="loader-branding">
+        <span class="loader-bio">BIO</span><span class="loader-sync">SYNC</span>
+      </div>
+      <div class="loader-bar-wrap">
+        <div class="loader-progress-bar" id="loader-progress-bar"></div>
+      </div>
+      <div class="loader-status-row">
+        <span class="loader-telemetry-dot"></span>
+        <span class="loader-status-text" id="loader-status-text">HYBRID ENGINE INITIALIZING</span>
+      </div>
+      <div class="loader-sub-telemetry">PS 26139 · QUANTUM–CLASSICAL RESEARCH PLATFORM</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ DESKTOP AMBIENT CURSOR GLOW ═══════════════════ -->
+  <div id="cursor-ambient-glow" class="cursor-ambient-glow" aria-hidden="true"></div>
+
+  <!-- ═══════════════════ TOP SCROLL PROGRESS (2px) ═══════════════════ -->
+  <div class="scroll-progress-container" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- ═══════════════════ AMBIENT QUANTUM BACKGROUND CANVAS ═══════════════════ -->
+  <canvas id="bg-network-canvas" class="bg-network-canvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+  <nav id="main-nav" class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#overview" class="nav-logo" aria-label="BioSync Home">
+        <span class="logo-pulse"></span>
+        <span class="logo-bio">BIO</span><span class="logo-sync">SYNC</span>
+        <span class="logo-sub-tag">SIH 2026</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="menubar">
+        <li class="nav-item" role="none">
+          <a href="#overview" class="nav-link active" role="menuitem">Overview</a>
+        </li>
+
+        <li class="nav-item nav-has-dropdown" role="none">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            <span>Architecture & System</span>
+            <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-panel" role="menu">
+            <a href="#problem" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box cyan">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Problem Statement</span>
+                <span class="dropdown-item-desc">Clinical diagnosis gap & late-stage detection bottleneck</span>
+              </div>
+            </a>
+            <a href="#solution" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box indigo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Proposed Solution</span>
+                <span class="dropdown-item-desc">BioSync hybrid intelligence & multi-modal pipeline</span>
+              </div>
+            </a>
+            <a href="#architecture" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box violet">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">4-Layer Architecture</span>
+                <span class="dropdown-item-desc">Ingestion, QSVM, XAI explainability & validation</span>
+              </div>
+            </a>
+            <a href="#feasibility" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box emerald">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Feasibility & Readiness</span>
+                <span class="dropdown-item-desc">Computational requirements, cost & deployment roadmap</span>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item nav-has-dropdown" role="none">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            <span>Quantum & Science</span>
+            <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-panel" role="menu">
+            <a href="#molecular-research" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box emerald">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Molecular Research</span>
+                <span class="dropdown-item-desc">KRAS, EGFR, TP53 docking & structural evidence</span>
+              </div>
+            </a>
+            <a href="#quantum-ml" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box cyan">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M10.4 10.4L6.5 17.5M13.6 13.6L17.5 6.5"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Quantum ML Layer</span>
+                <span class="dropdown-item-desc">QSVM kernel formulation & Hilbert space encoding</span>
+              </div>
+            </a>
+            <a href="#explainability" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box violet">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Explainable AI & SHAP</span>
+                <span class="dropdown-item-desc">Kernel SHAP attribution & feature impact transparency</span>
+              </div>
+            </a>
+            <a href="#simulations" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box indigo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Clinical Simulations</span>
+                <span class="dropdown-item-desc">Interactive disease risk prediction & parameter sweeps</span>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item nav-has-dropdown" role="none">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            <span>Impact & Research</span>
+            <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-panel" role="menu">
+            <a href="#impact" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box emerald">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Public Health Impact</span>
+                <span class="dropdown-item-desc">Societal benefits, health economics & screening reach</span>
+              </div>
+            </a>
+            <a href="#research" class="dropdown-card-item" role="menuitem">
+              <div class="dropdown-icon-box cyan">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <div class="dropdown-item-text">
+                <span class="dropdown-item-title">Research Foundations</span>
+                <span class="dropdown-item-desc">Academic literature, references & theoretical backing</span>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item" role="none">
+          <a href="#team" class="nav-link" role="menuitem">Team</a>
+        </li>
+      </ul>
+      <a href="#architecture" class="nav-cta">
+        <span>Explore System</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ [A] HERO — #overview ═══════════════════ -->
+  <section id="overview" class="section hero-section">
+    <div class="hero-bg-grid"></div>
+    <div class="particle-field" id="particle-field"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-meta-chips">
+          <span class="meta-chip">
+            <span class="chip-dot chip-dot-cyan"></span>
+            Problem Statement 26139
+          </span>
+          <span class="meta-chip">
+            <span class="chip-dot chip-dot-violet"></span>
+            Smart India Hackathon 2026
+          </span>
+          <span class="meta-chip">
+            <span class="chip-dot chip-dot-emerald"></span>
+            MedTech / BioTech / HealthTech
+          </span>
+        </div>
+        <div class="hero-badge-wrap">
+          <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-main">BioSync</span>
+        </h1>
+        <h2 class="hero-subtitle">Hybrid Quantum–Classical Machine Learning Platform for Early Disease Detection</h2>
+        <p class="hero-description">
+          A proposed hybrid biomedical intelligence platform combining classical preprocessing, quantum machine learning, classical benchmarking, explainable AI, and complementary molecular analysis.
+        </p>
+        <div class="hero-quote-card">
+          <div class="quote-card-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3c0 4-2 6-4 6v2zm13 0c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3c0 4-2 6-4 6v2z"/></svg>
+          </div>
+          <div class="quote-card-text">
+            “From complex biomedical data to interpretable disease-risk assessment.”
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#architecture" class="btn btn-primary">
+            <span>Explore Proposed Architecture</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <!-- Live telemetry ribbon -->
+        <div class="hero-telemetry-ribbon">
+          <div class="telemetry-item">
+            <span class="telemetry-indicator online"></span>
+            <span class="telemetry-label">SYSTEM STATE</span>
+            <span class="telemetry-val">HYBRID READY</span>
+          </div>
+          <div class="telemetry-divider"></div>
+          <div class="telemetry-item">
+            <span class="telemetry-indicator cycle"></span>
+            <span class="telemetry-label">DATA PIPELINE</span>
+            <span class="telemetry-val" id="hero-pipeline-status">INGESTION → QUANTUM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Interactive BioSync Hybrid Engine Visualization -->
+      <div class="hero-visual" id="hero-interactive-stage">
+        <div class="hero-engine-frame">
+          <!-- Ambient engine glow backdrop -->
+          <div class="engine-radial-glow"></div>
+          
+          <!-- Interactive Hybrid Engine SVG & HTML Canvas System -->
+          <div class="orbit-system" id="orbit-system">
+            <!-- Center Core -->
+            <div class="orbit-center" id="orbit-center-core">
+              <span class="orbit-core-ring orbit-core-outer"></span>
+              <span class="orbit-core-ring orbit-core-inner"></span>
+              <div class="orbit-core-pulse"></div>
+              <span class="orbit-center-label">BIOSYNC</span>
+              <span class="orbit-center-sub">Hybrid Engine</span>
+              <span class="orbit-core-phase" id="orbit-active-phase">STAGE 01</span>
+            </div>
+
+            <!-- SVG Data Highway Cables & Moving Energy Photons -->
+            <svg class="engine-svg-network" viewBox="0 0 520 520" aria-hidden="true">
+              <defs>
+                <linearGradient id="grad-cyan-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#2563EB" stop-opacity="0.85" />
+                  <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.25" />
+                </linearGradient>
+                <linearGradient id="grad-blue-violet" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1D4ED8" stop-opacity="0.85" />
+                  <stop offset="100%" stop-color="#6366F1" stop-opacity="0.25" />
+                </linearGradient>
+                <linearGradient id="grad-violet-magenta" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6366F1" stop-opacity="0.85" />
+                  <stop offset="100%" stop-color="#2563EB" stop-opacity="0.3" />
+                </linearGradient>
+                <linearGradient id="grad-emerald-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#10B981" stop-opacity="0.85" />
+                  <stop offset="100%" stop-color="#2563EB" stop-opacity="0.3" />
+                </linearGradient>
+                <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Orbital Guide Tracks -->
+              <circle cx="260" cy="260" r="215" class="engine-track-outer" />
+              <circle cx="260" cy="260" r="140" class="engine-track-inner" />
+              <circle cx="260" cy="260" r="75" class="engine-track-core" />
+
+              <!-- Radiating Synaptic Connectors -->
+              <g id="engine-connectors" class="engine-connectors"></g>
+
+              <!-- Dynamic Traveling Photons -->
+              <g id="engine-photons" class="engine-photons"></g>
+            </svg>
+
+            <!-- 7 Ecosystem Nodes (Exact Original Labels + Sub-Badges) -->
+            <div class="orbit-node node-step-1" data-step="1" id="hnode-1">
+              <div class="node-icon">🧬</div>
+              <div class="node-info">
+                <span class="node-title">Biomedical Data</span>
+                <span class="node-subtag">DATA INGESTION</span>
+              </div>
+              <span class="node-status-dot"></span>
+            </div>
+
+            <div class="orbit-node node-step-2" data-step="2" id="hnode-2">
+              <div class="node-icon">⚙️</div>
+              <div class="node-info">
+                <span class="node-title">Classical Preprocessing</span>
+                <span class="node-subtag">PREPROCESSING</span>
+              </div>
+              <span class="node-status-dot"></span>
+            </div>
+
+            <div class="orbit-node node-step-3" data-step="3" id="hnode-3">
+              <div class="node-icon">⚛️</div>
+              <div class="node-info">
+                <span class="node-title">Quantum ML</span>
+                <span class="node-subtag">QUANTUM ENCODING</span>
+              </div>
+              <span class="node-status-dot"></span>
+            </div>
+
+            <div class="orbit-node node-step-4" data-step="4" id="hnode-4">
+              <div class="node-icon">📊</div>
+              <div class="node-info">
+                <span class="node-title">Classical ML</span>
+                <span class="node-subtag">BENCHMARKING</span>
+              </div>
+              <span class="node-status-dot"></span>
+            </div>
+
+            <div class="orbit-node node-step-5" data-step="5" id="hnode-5">
+              <div class="node-icon">🔍</div>
+              <div class="node-info">
+                <span class="node-title">SHAP</span>
+                <span class="node-subtag">EXPLAINABILITY</span>
+              </div>
+              <span class="node-status-dot"></span>
+            </div>
+
+            <div class="orbit-node node-step-6" data-step="6" id="hnode-6">
+              <div class="node-icon">🎯</div>
+              <div class="node-info">
+                <span class="node-title">Risk Prediction</span>
+                <span class="node-subtag">RISK ASSESSMENT</span>
+              </div>
+              <span class="node-status-dot"></span>
+            </div>
+
+            <div class="orbit-node node-step-7" data-step="7" id="hnode-7">
+              <div class="node-icon">🔬</div>
+              <div class="node-info">
+                <span class="node-title">Molecular Analysis</span>
+                <span class="node-subtag">HYBRID MODEL</span>
+              </div>
+              <span class="node-status-dot"></span>
+            </div>
+          </div>
+
+          <!-- Flow Progression Monitor Bar -->
+          <div class="engine-stage-monitor" id="engine-stage-monitor">
+            <span class="monitor-label">ACTIVE COMPUTATION:</span>
+            <span class="monitor-val" id="monitor-stage-name">1. Ingesting Multi-Omic & Clinical Streams</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [B] THE PROBLEM — #problem ═══════════════════ -->
+  <section id="problem" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+        <h2 class="section-title">The Problem We Are Addressing</h2>
+        <p class="section-description">
+          Early and accurate disease detection significantly improves patient outcomes and reduces overall healthcare expenditure. However, real-world biomedical data is inherently high-dimensional, noisy, heterogeneous, and complex. While classical machine learning methods have achieved notable success, they face mathematical scaling challenges when navigating these high-dimensional biological landscapes.
+        </p>
+      </div>
+      
+      <div class="cards-grid cards-4-group">
+        <!-- Card 1: Genomic Data with animated DNA particle helix -->
+        <div class="glass-card problem-card problem-card-genomic" data-tilt>
+          <div class="card-visual-header">
+            <div class="card-icon card-icon-cyan">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l2-3 3 4 2-2 3 4"/></svg>
+            </div>
+            <div class="hud-canvas-wrap">
+              <svg class="hud-mini-canvas" viewBox="0 0 100 40" aria-hidden="true">
+                <path class="dna-helix-strand strand-a" d="M5,20 Q25,5 50,20 T95,20" />
+                <path class="dna-helix-strand strand-b" d="M5,20 Q25,35 50,20 T95,20" />
+                <line x1="25" y1="9" x2="25" y2="31" class="dna-rung" />
+                <line x1="50" y1="20" x2="50" y2="20" class="dna-rung" />
+                <line x1="75" y1="9" x2="75" y2="31" class="dna-rung" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="card-title">Genomic Data</h3>
+          <div class="card-prop"><strong>What it is:</strong> High-dimensional multi-omic sequencing profiles containing tens of thousands of gene variants.</div>
+          <div class="card-prop"><strong>Why it's hard:</strong> Extreme curse of dimensionality with small sample sizes leads to severe risk of overfitting.</div>
+          <div class="card-prop"><strong>Why preprocessing matters:</strong> Rigorous feature filtering and variance reduction are required to isolate true predictive biomarkers.</div>
+          <div class="card-corner-bracket"></div>
+        </div>
+
+        <!-- Card 2: Medical Records with telemetry grid -->
+        <div class="glass-card problem-card problem-card-records" data-tilt>
+          <div class="card-visual-header">
+            <div class="card-icon card-icon-blue">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            </div>
+            <div class="hud-canvas-wrap">
+              <div class="records-data-grid">
+                <span class="data-cell hl">HL7</span><span class="data-cell">0.82</span><span class="data-cell">NaN</span>
+                <span class="data-cell">FHIR</span><span class="data-cell hl">NORM</span><span class="data-cell">124</span>
+                <span class="data-cell">IMP</span><span class="data-cell">0.05</span><span class="data-cell hl">K-NN</span>
+              </div>
+            </div>
+          </div>
+          <h3 class="card-title">Medical Records</h3>
+          <div class="card-prop"><strong>What it is:</strong> Longitudinal electronic health records (EHR) spanning labs, diagnoses, and vitals.</div>
+          <div class="card-prop"><strong>Why it's hard:</strong> Sparse tables, extensive missing entries, asynchronous timestamps, and mixed categorical data.</div>
+          <div class="card-prop"><strong>Why preprocessing matters:</strong> Multi-method imputation and robust normalization are essential to preserve clinical integrity.</div>
+          <div class="card-corner-bracket"></div>
+        </div>
+
+        <!-- Card 3: Medical Imaging with scanning reticle -->
+        <div class="glass-card problem-card problem-card-imaging" data-tilt>
+          <div class="card-visual-header">
+            <div class="card-icon card-icon-violet">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <div class="hud-canvas-wrap">
+              <div class="scanner-sweep-container">
+                <div class="scanner-line"></div>
+                <div class="scanner-crosshair"></div>
+                <span class="scanner-tag">DICOM · 512²</span>
+              </div>
+            </div>
+          </div>
+          <h3 class="card-title">Medical Imaging</h3>
+          <div class="card-prop"><strong>What it is:</strong> High-resolution spatial scans including MRI, CT, histopathology, and radiomic maps.</div>
+          <div class="card-prop"><strong>Why it's hard:</strong> High intra-class variability, subtle morphological abnormalities, and computational density.</div>
+          <div class="card-prop"><strong>Why preprocessing matters:</strong> Dimension-compact feature extractors must distill structural signatures before modeling.</div>
+          <div class="card-corner-bracket"></div>
+        </div>
+
+        <!-- Card 4: Clinical Datasets with distribution curve -->
+        <div class="glass-card problem-card problem-card-clinical" data-tilt>
+          <div class="card-visual-header">
+            <div class="card-icon card-icon-magenta">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+            </div>
+            <div class="hud-canvas-wrap">
+              <svg class="hud-mini-canvas" viewBox="0 0 100 40" aria-hidden="true">
+                <path class="dist-curve" d="M5,35 Q30,35 45,8 T55,8 Q70,35 95,35" />
+                <circle cx="50" cy="8" r="3" class="dist-point" />
+                <circle cx="35" cy="24" r="2" class="dist-point-sub" />
+                <circle cx="65" cy="24" r="2" class="dist-point-sub" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="card-title">Clinical Datasets</h3>
+          <div class="card-prop"><strong>What it is:</strong> Tabular diagnostic panels, demographic parameters, and multi-cohort patient trials.</div>
+          <div class="card-prop"><strong>Why it's hard:</strong> Heavy class imbalance where positive disease cases represent a small fraction of the cohort.</div>
+          <div class="card-prop"><strong>Why preprocessing matters:</strong> Stratified scaling and rebalancing safeguards models against deceptive majority-class bias.</div>
+          <div class="card-corner-bracket"></div>
+        </div>
+      </div>
+      
+      <p class="section-closing">
+        BioSync proposes investigating quantum-enhanced learning alongside strong classical baselines.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [C] MOLECULAR RESEARCH & STRUCTURAL ANALYSIS — #molecular-research ═══════════════════ -->
+  <section id="molecular-research" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Molecular Research &amp; Structural Analysis</h2>
+        <p class="section-description">
+          BioSync's broader biomedical research direction also includes complementary molecular-analysis components such as BIOVIA, AlphaFold, AutoDock, and Vina. This is a complementary research component, separate from the VQC/QNN/QSVM disease-classification work described later on this page.
+        </p>
+      </div>
+
+      <!-- Molecular Architecture Workflow Diagram (Animated Interactive Pipeline) -->
+      <div class="molecular-flow-wrapper glass-card">
+        <div class="sub-label">
+          <span class="sub-label-dot"></span>
+          Planned Molecular Architecture Workflow
+        </div>
+        <div class="molecular-flow-diagram" id="molecular-flow-diagram">
+          <div class="mflow-node" data-node="1">
+            <span class="mflow-step-num">01</span>
+            <span class="mflow-text">Protein Sequence + Ligand Info</span>
+          </div>
+          <div class="mflow-arrow">→</div>
+          <div class="mflow-node" data-node="2">
+            <span class="mflow-step-num">02</span>
+            <span class="mflow-text">Protein Structure Prediction</span>
+          </div>
+          <div class="mflow-arrow">→</div>
+          <div class="mflow-node" data-node="3">
+            <span class="mflow-step-num">03</span>
+            <span class="mflow-text">Ligand-Aware Structural Rep.</span>
+          </div>
+          <div class="mflow-arrow">→</div>
+          <div class="mflow-node" data-node="4">
+            <span class="mflow-step-num">04</span>
+            <span class="mflow-text">3D Structure</span>
+          </div>
+          <div class="mflow-arrow">→</div>
+          <div class="mflow-node" data-node="5">
+            <span class="mflow-step-num">05</span>
+            <span class="mflow-text">Binding Pocket</span>
+          </div>
+          <div class="mflow-arrow">→</div>
+          <div class="mflow-node" data-node="6">
+            <span class="mflow-step-num">06</span>
+            <span class="mflow-text">Molecular Docking</span>
+          </div>
+          <div class="mflow-arrow">→</div>
+          <div class="mflow-node" data-node="7">
+            <span class="mflow-step-num">07</span>
+            <span class="mflow-text">Binding Affinity</span>
+          </div>
+          <div class="mflow-arrow">→</div>
+          <div class="mflow-node" data-node="8">
+            <span class="mflow-step-num">08</span>
+            <span class="mflow-text">Structural / Interaction Analysis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery (6 images, identical container size rule with HUD overlays) -->
+      <div class="gallery-grid">
+        <div class="gallery-card glass-card">
+          <div class="gallery-image-container">
+            <img src="public/images/molecular/protein-structure.jpg" alt="Protein Structure rainbow ribbon cartoon" class="gallery-img" data-caption="Protein Structure: Rainbow cartoon ribbon representation showing secondary alpha-helices and beta-sheets." />
+            <div class="gallery-hud-overlay">
+              <span class="hud-meta-badge">TARGET: MACROMOLECULE</span>
+              <span class="hud-meta-badge">RES: 1.85Å</span>
+            </div>
+            <div class="gallery-scanline"></div>
+            <button class="gallery-zoom-btn" aria-label="Expand image">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="gallery-card-body">
+            <h3 class="gallery-category-title">Protein Structure</h3>
+            <p class="gallery-explanation">
+              Predicted 3D macromolecular fold rendered as a rainbow cartoon ribbon diagram, highlighting secondary structural motifs and domain organization.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-card glass-card">
+          <div class="gallery-image-container">
+            <img src="public/images/molecular/binding-pocket.jpg" alt="Binding Pocket mesh surface with docked ligand" class="gallery-img" data-caption="Binding Pocket: Solvent-accessible surface mesh detailing the catalytic binding cavity." />
+            <div class="gallery-hud-overlay">
+              <span class="hud-meta-badge">SURFACE: SOLVENT-ACCESSIBLE</span>
+              <span class="hud-meta-badge">CAVITY: CATALYTIC</span>
+            </div>
+            <div class="gallery-scanline"></div>
+            <button class="gallery-zoom-btn" aria-label="Expand image">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="gallery-card-body">
+            <h3 class="gallery-category-title">Binding Pocket</h3>
+            <p class="gallery-explanation">
+              Solvent-accessible surface mesh revealing the steric cavity and catalytic binding pocket accommodating small-molecule inhibitor poses.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-card glass-card">
+          <div class="gallery-image-container">
+            <img src="public/images/molecular/molecular-surface.jpg" alt="Molecular Surface CPK space-filling model" class="gallery-img" data-caption="Molecular Representation: Space-filling CPK atomic sphere representation." />
+            <div class="gallery-hud-overlay">
+              <span class="hud-meta-badge">MODEL: CPK SPHERES</span>
+              <span class="hud-meta-badge">VDW ENVELOPE</span>
+            </div>
+            <div class="gallery-scanline"></div>
+            <button class="gallery-zoom-btn" aria-label="Expand image">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="gallery-card-body">
+            <h3 class="gallery-category-title">Molecular Representation</h3>
+            <p class="gallery-explanation">
+              Full atomistic space-filling CPK model illustrating van der Waals envelope, electrostatic contours, and molecular volume topology.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-card glass-card">
+          <div class="gallery-image-container">
+            <img src="public/images/molecular/structural-comparison.jpg" alt="Structural Comparison side-by-side structures" class="gallery-img" data-caption="Structural Comparison: Side-by-side dual structure superposition evaluating backbone alignment." />
+            <div class="gallery-hud-overlay">
+              <span class="hud-meta-badge">SUPERPOSITION: DUAL</span>
+              <span class="hud-meta-badge">ALIGN: BACKBONE</span>
+            </div>
+            <div class="gallery-scanline"></div>
+            <button class="gallery-zoom-btn" aria-label="Expand image">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="gallery-card-body">
+            <h3 class="gallery-category-title">Structural Comparison</h3>
+            <p class="gallery-explanation">
+              Side-by-side structural superposition comparing experimental crystallographic coordinates against AI-predicted folding conformations.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-card glass-card">
+          <div class="gallery-image-container">
+            <img src="public/images/molecular/interaction-analysis.jpg" alt="Interaction Analysis multi-panel contacts" class="gallery-img" data-caption="Interaction Analysis: Multi-panel diagram showing aromatic stacking and hydrogen bond networks." />
+            <div class="gallery-hud-overlay">
+              <span class="hud-meta-badge">CONTACT: H-BONDS</span>
+              <span class="hud-meta-badge">PI-STACKING: π-π</span>
+            </div>
+            <div class="gallery-scanline"></div>
+            <button class="gallery-zoom-btn" aria-label="Expand image">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="gallery-card-body">
+            <h3 class="gallery-category-title">Interaction Analysis</h3>
+            <p class="gallery-explanation">
+              Multi-panel contact mapping elucidating hydrogen bonds, pi-pi aromatic stacking, and hydrophobic contacts stabilizing the protein-ligand complex.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-card glass-card">
+          <div class="gallery-image-container">
+            <img src="public/images/molecular/extra-view.jpg" alt="Extra structural view receptor-ligand complex" class="gallery-img" data-caption="Extra Structural View: Fine-grained structural conformation showing binding site microenvironment." />
+            <div class="gallery-hud-overlay">
+              <span class="hud-meta-badge">MICROENV: ACTIVE SITE</span>
+              <span class="hud-meta-badge">CONFORMATION: HIGH-RES</span>
+            </div>
+            <div class="gallery-scanline"></div>
+            <button class="gallery-zoom-btn" aria-label="Expand image">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="gallery-card-body">
+            <h3 class="gallery-category-title">Extra Structural View</h3>
+            <p class="gallery-explanation">
+              High-resolution structural view of the active site microenvironment detailing critical side-chain orientations and binding pose geometry.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulation Previews -->
+      <div class="sim-preview-grid">
+        <a href="#simulations" class="glass-card sim-preview-card" data-sim-target="1ykr">
+          <div class="preview-badge-row">
+            <div class="preview-badge">Simulation Preview</div>
+            <span class="sim-plddt-pill">pLDDT 89.07</span>
+          </div>
+          <h4>PDB ID: 1YKR Target Analysis</h4>
+          <p>Inspect AI structural fold comparison with experimental reference and pLDDT score (89.07).</p>
+          <span class="preview-link">Jump to 1YKR Simulation →</span>
+        </a>
+        <a href="#simulations" class="glass-card sim-preview-card" data-sim-target="4kd1">
+          <div class="preview-badge-row">
+            <div class="preview-badge">Simulation Preview</div>
+            <span class="sim-plddt-pill">pLDDT 91.56</span>
+          </div>
+          <h4>PDB ID: 4KD1 Docking Matrix</h4>
+          <p>Inspect multi-tool docking affinity benchmarks across 10 synthesized ligands with pLDDT score (91.56).</p>
+          <span class="preview-link">Jump to 4KD1 Simulation →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [D] SOLUTION / SYSTEM OVERVIEW — #solution ═══════════════════ -->
+  <section id="solution" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+        <h2 class="section-title">What Is BioSync?</h2>
+        <p class="section-description">
+          The canonical vertical pipeline: from raw biomedical data to interpretable, clinical decision-support predictions.
+        </p>
+      </div>
+
+      <div class="canonical-pipeline-container" id="canonical-pipeline">
+        <!-- Glowing Data Stream Tracker -->
+        <div class="pipeline-track-spine">
+          <div class="pipeline-photon-packet" id="pipeline-photon"></div>
+        </div>
+
+        <div class="pipeline-step-node" data-step="1" data-tip="Ingestion of genomic sequences, electronic health records, imaging features, and laboratory panels.">
+          <div class="pnode-indicator">01</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Biomedical Data</span>
+            <span class="pnode-desc">Raw multi-modal patient inputs</span>
+          </div>
+          <div class="pnode-tag">INGESTION</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="2" data-tip="Filtering corrupt records, outlier detection, and schema harmonization.">
+          <div class="pnode-indicator">02</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Data Cleaning</span>
+            <span class="pnode-desc">Noise elimination and sanity checks</span>
+          </div>
+          <div class="pnode-tag">FILTERS</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="3" data-tip="Statistical and machine learning imputation for sparse medical records.">
+          <div class="pnode-indicator">03</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Missing-Value Handling</span>
+            <span class="pnode-desc">Controlled median &amp; KNN imputation</span>
+          </div>
+          <div class="pnode-tag">IMPUTATION</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="4" data-tip="Standardization and min-max scaling to bounded numerical ranges.">
+          <div class="pnode-indicator">04</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Normalization</span>
+            <span class="pnode-desc">Feature range standardization</span>
+          </div>
+          <div class="pnode-tag">SCALING</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="5" data-tip="Selecting high-importance informative features via statistical correlation and mutual information.">
+          <div class="pnode-indicator">05</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Feature Selection</span>
+            <span class="pnode-desc">Informative subset extraction</span>
+          </div>
+          <div class="pnode-tag">MUTUAL-INFO</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="6" data-tip="Principal Component Analysis compressing feature space to match NISQ qubit budgets.">
+          <div class="pnode-indicator">06</div>
+          <div class="pnode-content">
+            <span class="pnode-title">PCA / Dimensionality Reduction</span>
+            <span class="pnode-desc">Compact orthogonal representation</span>
+          </div>
+          <div class="pnode-tag">COMPRESSION</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="7" data-tip="Translating classical normalized features into quantum Hilbert states via parameterized rotation gates.">
+          <div class="pnode-indicator">07</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Quantum Feature Mapping</span>
+            <span class="pnode-desc">Hilbert state quantum encoding</span>
+          </div>
+          <div class="pnode-tag">ENCODING</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <!-- Dual Pipeline Branch -->
+        <div class="pipeline-dual-layer" id="pipeline-dual-branch">
+          <div class="dual-branch branch-quantum glass-card">
+            <div class="branch-glow"></div>
+            <div class="branch-header">Quantum ML Layer</div>
+            <div class="branch-chips">
+              <span class="branch-tag">VQC</span>
+              <span class="branch-tag">QNN</span>
+              <span class="branch-tag">QSVM</span>
+            </div>
+            <p class="branch-note">Parameterized circuits, variational quantum layers, and quantum kernels.</p>
+          </div>
+          <div class="dual-plus">+</div>
+          <div class="dual-branch branch-classical glass-card">
+            <div class="branch-glow"></div>
+            <div class="branch-header">Classical ML Layer</div>
+            <div class="branch-chips">
+              <span class="branch-tag">SVM</span>
+              <span class="branch-tag">Random Forest</span>
+              <span class="branch-tag">XGBoost</span>
+              <span class="branch-tag">Neural Network</span>
+            </div>
+            <p class="branch-note">Established high-performance benchmarks for rigorous empirical comparison.</p>
+          </div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="8" data-tip="Systematic cross-validated scoring across accuracy, F1, AUC, and efficiency.">
+          <div class="pnode-indicator">08</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Evaluation</span>
+            <span class="pnode-desc">Empirical multi-metric benchmarking</span>
+          </div>
+          <div class="pnode-tag">VALIDATION</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="9" data-tip="Shapley Additive exPlanations attributing predictive weight to individual biomedical features.">
+          <div class="pnode-indicator">09</div>
+          <div class="pnode-content">
+            <span class="pnode-title">SHAP Explainability</span>
+            <span class="pnode-desc">Mathematical feature contribution attribution</span>
+          </div>
+          <div class="pnode-tag">TRANSPARENCY</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="10" data-tip="Well-calibrated continuous probability estimate of pathological onset.">
+          <div class="pnode-indicator">10</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Disease Probability</span>
+            <span class="pnode-desc">Calibrated predictive certainty score</span>
+          </div>
+          <div class="pnode-tag">CALIBRATION</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node" data-step="11" data-tip="Stratified clinical categories (Low, Moderate, Elevated) with confidence margins.">
+          <div class="pnode-indicator">11</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Risk Assessment</span>
+            <span class="pnode-desc">Clinical risk stratification</span>
+          </div>
+          <div class="pnode-tag">STRATIFICATION</div>
+        </div>
+        <div class="pipeline-connector-line"></div>
+
+        <div class="pipeline-step-node pnode-highlight" data-step="12" data-tip="Comprehensive interactive clinical portal for clinician review and decision support.">
+          <div class="pnode-indicator">12</div>
+          <div class="pnode-content">
+            <span class="pnode-title">Decision-Support Dashboard</span>
+            <span class="pnode-desc">Actionable interpretable clinician interface</span>
+          </div>
+          <div class="pnode-tag pnode-tag-gold">INTERFACE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [E] ARCHITECTURE — #architecture ═══════════════════ -->
+  <section id="architecture" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+        <h2 class="section-title">Target System Architecture</h2>
+        <p class="section-description">
+          A production-quality visual framework illustrating BioSync's 8 modular architectural tiers. Each layer is engineered with identical dimensional consistency and connected by structured photon data pathways.
+        </p>
+      </div>
+
+      <!-- Architecture Spine Container -->
+      <div class="arch-journey-wrapper">
+        <!-- Central vertical illuminated energy spine -->
+        <div class="arch-central-spine" aria-hidden="true">
+          <div class="spine-line"></div>
+          <div class="spine-progress-fill" id="spine-progress-fill"></div>
+          <div class="spine-cursor" id="spine-cursor"></div>
+        </div>
+
+        <div class="arch-layers-stack" id="arch-layers-stack">
+          <!-- Layer 1 -->
+          <div class="arch-layer glass-card" tabindex="0" data-layer="1" id="arch-l1">
+            <div class="arch-layer-header">
+              <div class="arch-layer-index">01</div>
+              <div class="arch-layer-title-block">
+                <h3>Biomedical Data Input</h3>
+                <span class="arch-layer-sub">Genomic · Medical Records · Medical Imaging · Clinical Data</span>
+              </div>
+              <div class="arch-layer-status-badge">TIER 01</div>
+              <span class="arch-expand-icon">+</span>
+            </div>
+            <div class="arch-layer-body">
+              <p>Ingests multi-modal clinical signals: DNA/RNA variant sequences, longitudinal EHR lab reports, radiomics, and trial datasets.</p>
+              <div class="arch-tags">
+                <span>FASTA/VCF</span><span>HL7/FHIR</span><span>DICOM Scans</span><span>Clinical Cohorts</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-connector-arrow">↓</div>
+
+          <!-- Layer 2 -->
+          <div class="arch-layer glass-card" tabindex="0" data-layer="2" id="arch-l2">
+            <div class="arch-layer-header">
+              <div class="arch-layer-index">02</div>
+              <div class="arch-layer-title-block">
+                <h3>Classical Preprocessing</h3>
+                <span class="arch-layer-sub">Cleaning · Missing Values · Normalization · Feature Selection · PCA</span>
+              </div>
+              <div class="arch-layer-status-badge">TIER 02</div>
+              <span class="arch-expand-icon">+</span>
+            </div>
+            <div class="arch-layer-body">
+              <p>Robust classical pipeline that cleans artifacts, imputes sparse matrices, standardizes numerical ranges, and compresses high-dimensional variance into low-rank representations.</p>
+              <div class="arch-tags">
+                <span>Z-Score Scaling</span><span>Iterative Imputer</span><span>Variance Threshold</span><span>Orthogonal PCA</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-connector-arrow">↓</div>
+
+          <!-- Layer 3 -->
+          <div class="arch-layer glass-card" tabindex="0" data-layer="3" id="arch-l3">
+            <div class="arch-layer-header">
+              <div class="arch-layer-index">03</div>
+              <div class="arch-layer-title-block">
+                <h3>Quantum Compatibility</h3>
+                <span class="arch-layer-sub">Reduced Feature Space · Feature Scaling · Quantum Feature Mapping · State Encoding</span>
+              </div>
+              <div class="arch-layer-status-badge">TIER 03</div>
+              <span class="arch-expand-icon">+</span>
+            </div>
+            <div class="arch-layer-body">
+              <p>Bridges classical outputs to quantum inputs by scaling features into [0, 2π] phase angles and encoding them into multi-qubit superposition states.</p>
+              <div class="arch-tags">
+                <span>Angle Encoding</span><span>Amplitude Encoding</span><span>ZZ-Feature Map</span><span>Bloch Sphere Mapping</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-connector-arrow">↓</div>
+
+          <!-- Layer 4 -->
+          <div class="arch-layer glass-card" tabindex="0" data-layer="4" id="arch-l4">
+            <div class="arch-layer-header">
+              <div class="arch-layer-index">04</div>
+              <div class="arch-layer-title-block">
+                <h3>Quantum Machine Learning</h3>
+                <span class="arch-layer-sub">Variational Quantum Classifier (VQC) · Quantum Neural Network (QNN) · QSVM</span>
+              </div>
+              <div class="arch-layer-status-badge">TIER 04</div>
+              <span class="arch-expand-icon">+</span>
+            </div>
+            <div class="arch-layer-body">
+              <p>Core quantum processing tier executing parameterized ansatz circuits, entanglement layers, quantum kernels, and classical parameter updates.</p>
+              <div class="arch-tags">
+                <span>Parameterized Gates</span><span>Entanglement Topology</span><span>Quantum Kernel Matrix</span><span>SPSA / COBYLA Optimizer</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-connector-arrow">↓</div>
+
+          <!-- Layer 5 -->
+          <div class="arch-layer glass-card" tabindex="0" data-layer="5" id="arch-l5">
+            <div class="arch-layer-header">
+              <div class="arch-layer-index">05</div>
+              <div class="arch-layer-title-block">
+                <h3>Classical Benchmark</h3>
+                <span class="arch-layer-sub">SVM · Random Forest · XGBoost · Deep Neural Network</span>
+              </div>
+              <div class="arch-layer-status-badge">TIER 05</div>
+              <span class="arch-expand-icon">+</span>
+            </div>
+            <div class="arch-layer-body">
+              <p>Rigorous baseline ensemble executing identical validation splits to empirically evaluate the genuine utility of quantum-enhanced representations.</p>
+              <div class="arch-tags">
+                <span>RBF-Kernel SVM</span><span>Tree Ensembles</span><span>Gradient Boosting</span><span>Multi-Layer Perceptron</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-connector-arrow">↓</div>
+
+          <!-- Layer 6 -->
+          <div class="arch-layer glass-card" tabindex="0" data-layer="6" id="arch-l6">
+            <div class="arch-layer-header">
+              <div class="arch-layer-index">06</div>
+              <div class="arch-layer-title-block">
+                <h3>Evaluation Engine</h3>
+                <span class="arch-layer-sub">Accuracy · Sensitivity · Specificity · F1 · AUC · Efficiency · Generalization · Robustness</span>
+              </div>
+              <div class="arch-layer-status-badge">TIER 06</div>
+              <span class="arch-expand-icon">+</span>
+            </div>
+            <div class="arch-layer-body">
+              <p>Holistic benchmarking across eight clinical and computational metrics to prevent biased single-metric evaluation.</p>
+              <div class="arch-tags">
+                <span>K-Fold CV</span><span>Confusion Matrix</span><span>ROC-AUC Curve</span><span>Latency Tracking</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-connector-arrow">↓</div>
+
+          <!-- Layer 7 -->
+          <div class="arch-layer glass-card" tabindex="0" data-layer="7" id="arch-l7">
+            <div class="arch-layer-header">
+              <div class="arch-layer-index">07</div>
+              <div class="arch-layer-title-block">
+                <h3>Explainability (SHAP)</h3>
+                <span class="arch-layer-sub">Shapley Values · Feature Attributions · Local Explanations · Global Impact</span>
+              </div>
+              <div class="arch-layer-status-badge">TIER 07</div>
+              <span class="arch-expand-icon">+</span>
+            </div>
+            <div class="arch-layer-body">
+              <p>Transforms black-box model decisions into transparent, interpretable clinical insights by computing fair Shapley additive contributions for every feature.</p>
+              <div class="arch-tags">
+                <span>KernelSHAP</span><span>Local Attribution</span><span>Feature Ranking</span><span>Clinical Transparency</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-connector-arrow">↓</div>
+
+          <!-- Layer 8 -->
+          <div class="arch-layer glass-card" tabindex="0" data-layer="8" id="arch-l8">
+            <div class="arch-layer-header">
+              <div class="arch-layer-index">08</div>
+              <div class="arch-layer-title-block">
+                <h3>Output &amp; Decision Support</h3>
+                <span class="arch-layer-sub">Disease Probability · Risk Assessment · Important Features · Clinical Interpretation</span>
+              </div>
+              <div class="arch-layer-status-badge">TIER 08</div>
+              <span class="arch-expand-icon">+</span>
+            </div>
+            <div class="arch-layer-body">
+              <p>Delivers calibrated risk tiers, confidence margins, highlighted biomarker features, and actionable summaries to assist clinical judgment.</p>
+              <div class="arch-tags">
+                <span>Probability Calibration</span><span>Risk Stratification</span><span>Biomarker Panels</span><span>Clinical Reports</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [F] WHY HYBRID? SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">Why a Hybrid Architecture?</h3>
+        <p class="subsection-intro">
+          Current Noisy Intermediate-Scale Quantum (NISQ) devices face fundamental hardware constraints in physical qubit count and circuit coherence time. High-dimensional biomedical data cannot be directly encoded onto existing quantum processors without prior compression. BioSync addresses this through a purposeful division of labor.
+        </p>
+        <div class="hybrid-triad-grid">
+          <div class="glass-card triad-card">
+            <div class="triad-icon-wrap">
+              <div class="triad-icon">🖥️</div>
+              <span class="triad-role">CLASSICAL STAGE</span>
+            </div>
+            <h4 class="triad-title">Classical Front-End</h4>
+            <p>High-dimensional data cleaning, imputation, and PCA variance reduction happen classically on standard compute to compress thousands of features down to a compact, quantum-compatible input space.</p>
+            <div class="triad-badge-strip">
+              <span>CPU/GPU Compute</span><span>High-Dim Support</span>
+            </div>
+          </div>
+          <div class="glass-card triad-card">
+            <div class="triad-icon-wrap">
+              <div class="triad-icon">⚛️</div>
+              <span class="triad-role">QUANTUM STAGE</span>
+            </div>
+            <h4 class="triad-title">Quantum Processing</h4>
+            <p>Parameterized quantum circuits (VQC, QNN, QSVM) operate on the compact encoded space, evaluating quantum feature representations and non-linear Hilbert space correlations with shallow circuit depth.</p>
+            <div class="triad-badge-strip">
+              <span>Hilbert Space</span><span>NISQ-Ready Depth</span>
+            </div>
+          </div>
+          <div class="glass-card triad-card">
+            <div class="triad-icon-wrap">
+              <div class="triad-icon">⚖️</div>
+              <span class="triad-role">BENCHMARK STAGE</span>
+            </div>
+            <h4 class="triad-title">Classical Benchmarking</h4>
+            <p>Established classical baselines (SVM, RF, XGBoost) run parallel evaluations on identical test sets, ensuring every proposed quantum model is held to rigorous empirical validation rather than speculative claims.</p>
+            <div class="triad-badge-strip">
+              <span>Empirical Grounding</span><span>Zero-Bias Split</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [G] QUANTUM ML — #quantum-ml ═══════════════════ -->
+  <section id="quantum-ml" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+        <h2 class="section-title">Quantum Machine Learning Layer</h2>
+        <p class="section-description">
+          Three complementary quantum learning approaches are proposed in BioSync.
+        </p>
+      </div>
+
+      <!-- Tabbed UI with Circuit Morph Transition -->
+      <div class="qml-tabs-container">
+        <div class="qml-tab-buttons" role="tablist">
+          <button class="qml-tab-btn active" data-tab="vqc" role="tab" aria-selected="true">
+            <span class="tab-indicator-dot"></span>
+            VQC (Variational Classifier)
+          </button>
+          <button class="qml-tab-btn" data-tab="qnn" role="tab" aria-selected="false">
+            <span class="tab-indicator-dot"></span>
+            QNN (Quantum Neural Network)
+          </button>
+          <button class="qml-tab-btn" data-tab="qsvm" role="tab" aria-selected="false">
+            <span class="tab-indicator-dot"></span>
+            QSVM (Quantum SVM)
+          </button>
+        </div>
+
+        <!-- Dynamic Animated Quantum Circuit Canvas (WOW #4) -->
+        <div class="interactive-circuit-visualizer glass-card">
+          <div class="circuit-top-bar">
+            <div class="circuit-telemetry">
+              <span class="circuit-badge" id="circuit-active-badge">CIRCUIT: 4-QUBIT VQC ANSATZ</span>
+              <span class="circuit-meta">DEPTH: 2 · QUBITS: q0..q3 · OPTIMIZER: COBYLA / SPSA</span>
+            </div>
+            <div class="circuit-status-chip">
+              <span class="circuit-pulse-light"></span>
+              SIMULATION ACTIVE
+            </div>
+          </div>
+
+          <!-- Dynamic SVG Circuit Canvas with Active Quantum Waves -->
+          <div class="circuit-canvas-container" id="circuit-canvas-container">
+            <svg class="circuit-svg-stage" id="circuit-svg-stage" viewBox="0 0 760 210" aria-label="Interactive Quantum Circuit">
+              <!-- Qubit Register Lines -->
+              <g class="qubit-wires">
+                <line x1="50" y1="40" x2="710" y2="40" class="qubit-wire" />
+                <line x1="50" y1="85" x2="710" y2="85" class="qubit-wire" />
+                <line x1="50" y1="130" x2="710" y2="130" class="qubit-wire" />
+                <line x1="50" y1="175" x2="710" y2="175" class="qubit-wire" />
+              </g>
+
+              <!-- Dynamic Gate Layer Group (Rendered & Morphed via JS) -->
+              <g id="circuit-dynamic-elements"></g>
+
+              <!-- Animated Quantum Pulses traversing along the wires -->
+              <g id="circuit-pulses"></g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tab 1: VQC Panel -->
+        <div class="qml-tab-panel active glass-card" id="tab-vqc" role="tabpanel">
+          <div class="qml-panel-header">
+            <h3>Variational Quantum Classifier (VQC)</h3>
+            <span class="qml-role-badge">Direct Parameterized Classification</span>
+          </div>
+          <div class="qml-flow-strip">
+            <span class="qstep">Reduced Features</span> →
+            <span class="qstep">Quantum Feature Encoding</span> →
+            <span class="qstep">Parameterized Quantum Circuit</span> →
+            <span class="qstep">Entanglement</span> →
+            <span class="qstep">Measurement</span> →
+            <span class="qstep">Classical Optimization</span> →
+            <span class="qstep">Classification Output</span>
+          </div>
+          <div class="circuit-block-wrapper">
+            <div class="circuit-block-label">Rendered Monospace Circuit Diagram (4-Qubit Ansatz)</div>
+            <pre class="quantum-circuit-ascii"><code>q0 ── RY(x1) ──●──── RZ(θ1) ── M
+q1 ── RY(x2) ──X──── RZ(θ2) ── M
+q2 ── RY(x3) ──●──── RZ(θ3) ── M
+q3 ── RY(x4) ──X──── RZ(θ4) ── M</code></pre>
+          </div>
+          <div class="qml-why-box">
+            <strong>Why VQC fits BioSync:</strong>
+            <p>
+              VQC is proposed as a direct quantum classification approach using trainable circuit parameters. It fits BioSync because it works with a compact encoded feature space, provides a trainable quantum circuit, and is compatible with simulator/NISQ-oriented development. VQC will be evaluated against classical baselines.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tab 2: QNN Panel -->
+        <div class="qml-tab-panel glass-card" id="tab-qnn" role="tabpanel">
+          <div class="qml-panel-header">
+            <h3>Quantum Neural Network (QNN)</h3>
+            <span class="qml-role-badge">Layered Quantum Representation</span>
+          </div>
+          <div class="qml-flow-strip">
+            <span class="qstep">Biomedical Features</span> →
+            <span class="qstep">Feature Encoding</span> →
+            <span class="qstep">Quantum Layer</span> →
+            <span class="qstep">Variational Layer</span> →
+            <span class="qstep">Entanglement</span> →
+            <span class="qstep">Measurement</span> →
+            <span class="qstep">Classical Loss</span> →
+            <span class="qstep">Parameter Optimization</span> →
+            <span class="qstep">Prediction</span>
+          </div>
+          <div class="circuit-block-wrapper">
+            <div class="circuit-block-label">Rendered Architecture Visual — Multi-Layer QNN Flow</div>
+            <div class="qnn-layer-visual">
+              <div class="qnn-col">
+                <span class="col-title">Input State |ψ(x)⟩</span>
+                <div class="col-box">Encoding Layers U(x)</div>
+              </div>
+              <div class="qnn-arrow">⇄</div>
+              <div class="qnn-col">
+                <span class="col-title">Parameterized Layers</span>
+                <div class="col-box">Variational Unitaries W(θ)</div>
+              </div>
+              <div class="qnn-arrow">⇄</div>
+              <div class="qnn-col">
+                <span class="col-title">Entangling Lattice</span>
+                <div class="col-box">CNOT Multi-Qubit Web</div>
+              </div>
+              <div class="qnn-arrow">⇄</div>
+              <div class="qnn-col">
+                <span class="col-title">Observable Output</span>
+                <div class="col-box">⟨Z_i⟩ Expectation Values</div>
+              </div>
+            </div>
+          </div>
+          <div class="qml-why-box">
+            <strong>Why QNN fits BioSync:</strong>
+            <p>
+              QNN is proposed as a complementary quantum learning architecture rather than being assumed to be superior.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tab 3: QSVM Panel -->
+        <div class="qml-tab-panel glass-card" id="tab-qsvm" role="tabpanel">
+          <div class="qml-panel-header">
+            <h3>Quantum Support Vector Machine (QSVM)</h3>
+            <span class="qml-role-badge">Quantum Kernel-Based Method</span>
+          </div>
+          <div class="qml-flow-strip">
+            <span class="qstep">Reduced Features</span> →
+            <span class="qstep">Quantum Feature Map</span> →
+            <span class="qstep">Quantum Kernel</span> →
+            <span class="qstep">Kernel Matrix</span> →
+            <span class="qstep">Support Vector Machine</span> →
+            <span class="qstep">Decision Boundary</span> →
+            <span class="qstep">Prediction</span>
+          </div>
+          <div class="circuit-block-wrapper">
+            <div class="circuit-block-label">Rendered 4-Stage Horizontal Visual — Quantum Kernel Workflow</div>
+            <div class="qsvm-4stage-visual">
+              <div class="qsvm-stage">
+                <div class="qsvm-stage-num">1</div>
+                <div class="qsvm-stage-name">Classical Space</div>
+                <div class="qsvm-stage-desc">Input vector x ∈ ℝⁿ</div>
+              </div>
+              <div class="qsvm-stage-sep">→</div>
+              <div class="qsvm-stage">
+                <div class="qsvm-stage-num">2</div>
+                <div class="qsvm-stage-name">Quantum Hilbert Space</div>
+                <div class="qsvm-stage-desc">State |Φ(x)⟩ in 2ⁿ dimensions</div>
+              </div>
+              <div class="qsvm-stage-sep">→</div>
+              <div class="qsvm-stage">
+                <div class="qsvm-stage-num">3</div>
+                <div class="qsvm-stage-name">Kernel Representation</div>
+                <div class="qsvm-stage-desc">K(x_i, x_j) = |⟨Φ(x_i)|Φ(x_j)⟩|²</div>
+              </div>
+              <div class="qsvm-stage-sep">→</div>
+              <div class="qsvm-stage">
+                <div class="qsvm-stage-num">4</div>
+                <div class="qsvm-stage-name">SVM Classification</div>
+                <div class="qsvm-stage-desc">Optimal separating hyperplane</div>
+              </div>
+            </div>
+          </div>
+          <div class="qml-why-box">
+            <strong>Why QSVM fits BioSync:</strong>
+            <p>
+              QSVM is proposed to investigate quantum feature-space representations through a kernel-based learning workflow.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantum + Classical Split-Screen Visualization (Item 12) -->
+      <div class="split-hybrid-visualizer glass-card">
+        <div class="split-vis-header">
+          <span class="split-vis-tag">HYBRID DIVISION OF LABOR</span>
+          <h3 class="split-vis-title">Classical vs. Quantum Computational Domains</h3>
+          <p class="split-vis-desc">Visualizing high-dimensional classical compression crossing into low-dimensional quantum Hilbert space.</p>
+        </div>
+        <div class="split-screen-grid">
+          <!-- Left: Classical Computing -->
+          <div class="split-col split-classical">
+            <div class="split-col-badge">
+              <span class="badge-icon">💻</span>
+              CLASSICAL COMPUTING
+            </div>
+            <div class="split-visual-box classical-box">
+              <div class="dense-data-field">
+                <div class="data-particles-grid" id="classical-points-grid"></div>
+              </div>
+              <div class="box-funnel-icon">▼</div>
+              <div class="box-action-tag">PCA &amp; Feature Compression</div>
+            </div>
+            <ul class="split-features-list">
+              <li>Ingests thousands of high-dimensional multi-omic signals</li>
+              <li>Calculates statistical imputation &amp; z-score normalization</li>
+              <li>Projects variance down to compact 4-to-16 feature vectors</li>
+            </ul>
+          </div>
+
+          <!-- Center: Hybrid Gateway -->
+          <div class="split-center-gateway">
+            <div class="gateway-pulse-ring"></div>
+            <div class="gateway-icon">⇄</div>
+            <span class="gateway-label">HYBRID GATEWAY</span>
+            <span class="gateway-sub">Angle &amp; Phase Encoding</span>
+            <div class="gateway-arrow-flow">
+              <span class="flow-dot d1"></span>
+              <span class="flow-dot d2"></span>
+              <span class="flow-dot d3"></span>
+            </div>
+          </div>
+
+          <!-- Right: Quantum Computing -->
+          <div class="split-col split-quantum">
+            <div class="split-col-badge">
+              <span class="badge-icon">⚛️</span>
+              QUANTUM COMPUTING
+            </div>
+            <div class="split-visual-box quantum-box">
+              <div class="hilbert-space-field">
+                <div class="bloch-sphere-visual">
+                  <div class="bloch-axis-z"></div>
+                  <div class="bloch-axis-x"></div>
+                  <div class="bloch-orbit-ring"></div>
+                  <div class="bloch-state-vector"></div>
+                </div>
+              </div>
+              <div class="box-funnel-icon">▲</div>
+              <div class="box-action-tag">Non-Linear Hilbert Space Mapping</div>
+            </div>
+            <ul class="split-features-list">
+              <li>Maps compact features into 2ⁿ-dimensional state vectors</li>
+              <li>Evaluates multi-qubit entanglement &amp; variational unitaries</li>
+              <li>Computes quantum kernel inner products with shallow depth</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantum Comparison Table -->
+      <div class="comparison-table-wrapper glass-card">
+        <h3 class="table-title">Factual Architectural Comparison</h3>
+        <div class="table-responsive">
+          <table class="qml-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Core Idea</th>
+                <th>Input</th>
+                <th>Quantum Component</th>
+                <th>Learning Mechanism</th>
+                <th>Expected Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row-vqc">
+                <td><strong class="text-cyan">VQC</strong></td>
+                <td>Direct parameterized quantum circuit classifier</td>
+                <td>PCA-reduced classical features</td>
+                <td>Parameterized rotation gates &amp; entanglement</td>
+                <td>Classical optimizer updates circuit parameters (θ)</td>
+                <td>Primary variational classification baseline</td>
+              </tr>
+              <tr class="table-row-qnn">
+                <td><strong class="text-violet">QNN</strong></td>
+                <td>Multi-layer quantum neural network representation</td>
+                <td>Encoded biomedical feature states</td>
+                <td>Layered variational &amp; entangling unitaries</td>
+                <td>Gradient-based loss minimization on expectation values</td>
+                <td>Explore layered quantum representations</td>
+              </tr>
+              <tr class="table-row-qsvm">
+                <td><strong class="text-emerald">QSVM</strong></td>
+                <td>Quantum kernel estimation in high-dimensional Hilbert space</td>
+                <td>Reduced biomedical feature vectors</td>
+                <td>Quantum feature map for inner-product estimation</td>
+                <td>Classical convex quadratic optimization for SVM boundary</td>
+                <td>Evaluate non-linear quantum kernel separation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-closing-note">
+          BioSync proposes multiple quantum approaches because the system should evaluate different quantum learning paradigms rather than assuming one is optimal before experimentation.
+        </p>
+      </div>
+
+      <!-- Selection-Logic Diagram -->
+      <div class="selection-tree-wrapper glass-card">
+        <h3 class="tree-title">Selection-Logic Decision Tree</h3>
+        <div class="decision-tree-grid">
+          <div class="tree-root">
+            <span class="tree-badge">Input</span>
+            <div class="tree-box">Compact Biomedical Feature Space</div>
+          </div>
+          <div class="tree-branches">
+            <div class="tree-branch-card">
+              <span class="branch-q">“Trainable quantum circuit?”</span>
+              <span class="branch-arrow">↳</span>
+              <span class="branch-res">VQC (Parameterized Ansatz)</span>
+            </div>
+            <div class="tree-branch-card">
+              <span class="branch-q">“Layered quantum representation?”</span>
+              <span class="branch-arrow">↳</span>
+              <span class="branch-res">QNN (Variational Layers)</span>
+            </div>
+            <div class="tree-branch-card">
+              <span class="branch-q">“Kernel-based approach?”</span>
+              <span class="branch-arrow">↳</span>
+              <span class="branch-res">QSVM (Quantum Kernel Matrix)</span>
+            </div>
+          </div>
+          <div class="tree-footer-bar">
+            <span>All Three Approaches</span> → <strong>Compare Against Classical Baselines</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- [H] CLASSICAL ML LAYER SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">Classical Models Are Not Optional</h3>
+        <p class="subsection-intro">
+          The project aims to benchmark hybrid quantum approaches against established classical approaches.
+        </p>
+        <div class="two-col-compare">
+          <div class="glass-card compare-card compare-quantum">
+            <div class="compare-icon">⚛️</div>
+            <h4>Proposed Quantum Models</h4>
+            <ul class="compare-list">
+              <li><strong>VQC:</strong> Variational circuits with parameterized rotation gates.</li>
+              <li><strong>QNN:</strong> Layered quantum transformations with classical loss feedback.</li>
+              <li><strong>QSVM:</strong> Quantum inner-product kernel estimation in Hilbert space.</li>
+            </ul>
+          </div>
+          <div class="glass-card compare-card compare-classical">
+            <div class="compare-icon">💻</div>
+            <h4>Classical Baselines (Required)</h4>
+            <ul class="compare-list">
+              <li><strong>SVM:</strong> RBF &amp; polynomial kernel baselines on identical features.</li>
+              <li><strong>Random Forest:</strong> Non-linear ensemble handling feature interactions.</li>
+              <li><strong>XGBoost:</strong> State-of-the-art gradient boosted decision trees.</li>
+              <li><strong>Neural Network:</strong> Multi-layer perceptron (MLP) deep architecture.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- [I] EVALUATION FRAMEWORK SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">How We Will Evaluate the System</h3>
+        <p class="subsection-intro">
+          Final model selection will be based on empirical benchmarking rather than assuming a quantum model is automatically better.
+        </p>
+        <div class="radial-eval-wrapper">
+          <div class="eval-center-node">
+            <span class="eval-core-ring"></span>
+            <span>EVALUATION ENGINE</span>
+          </div>
+          <div class="eval-metrics-grid">
+            <div class="eval-metric-pill" data-metric="acc"><span>Accuracy</span></div>
+            <div class="eval-metric-pill" data-metric="sens"><span>Sensitivity</span></div>
+            <div class="eval-metric-pill" data-metric="spec"><span>Specificity</span></div>
+            <div class="eval-metric-pill" data-metric="f1"><span>F1-Score</span></div>
+            <div class="eval-metric-pill" data-metric="auc"><span>AUC-ROC</span></div>
+            <div class="eval-metric-pill" data-metric="eff"><span>Computational Efficiency</span></div>
+            <div class="eval-metric-pill" data-metric="gen"><span>Generalization</span></div>
+            <div class="eval-metric-pill" data-metric="rob"><span>Robustness</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [J] EXPLAINABILITY — #explainability ═══════════════════ -->
+  <section id="explainability" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+        <h2 class="section-title">From Prediction to Explanation</h2>
+        <p class="section-description">
+          Bridging model inference and clinical accountability through SHAP (Shapley Additive exPlanations).
+        </p>
+      </div>
+
+      <div class="explainability-flow glass-card">
+        <div class="xflow-node"><span class="xf-num">1</span> Model Output</div>
+        <div class="xflow-arrow">→</div>
+        <div class="xflow-node"><span class="xf-num">2</span> SHAP</div>
+        <div class="xflow-arrow">→</div>
+        <div class="xflow-node"><span class="xf-num">3</span> Feature Contribution</div>
+        <div class="xflow-arrow">→</div>
+        <div class="xflow-node"><span class="xf-num">4</span> Important Features</div>
+        <div class="xflow-arrow">→</div>
+        <div class="xflow-node"><span class="xf-num">5</span> Risk Interpretation</div>
+      </div>
+
+      <!-- Interactive SHAP Feature Contribution Visualizer -->
+      <div class="shap-chart-wrapper glass-card">
+        <div class="shap-header-row">
+          <div>
+            <h3 class="shap-chart-title">Illustrative SHAP Feature Attribution (Placeholder Labels Only)</h3>
+            <p class="shap-disclaimer">Features are marked with placeholder designations to adhere strictly to pre-build proposal guidelines.</p>
+          </div>
+          <div class="shap-legend">
+            <span class="leg-item"><span class="leg-dot pos"></span> Increases Risk (+)</span>
+            <span class="leg-item"><span class="leg-dot neg"></span> Decreases Risk (-)</span>
+          </div>
+        </div>
+        
+        <div class="shap-bar-chart" id="shap-bar-chart">
+          <div class="shap-row important-feature" data-val="+0.42" data-feat="Feature A">
+            <div class="shap-label-col">
+              <span class="shap-label">Feature A</span>
+              <span class="shap-sub">Biomarker Component 1</span>
+            </div>
+            <div class="shap-bar-track">
+              <div class="shap-zero-axis"></div>
+              <div class="shap-bar shap-bar-pos" style="width: 72%;">
+                <span class="bar-num">+0.42</span>
+              </div>
+            </div>
+            <div class="shap-impact-text text-cyan">Elevates Risk</div>
+          </div>
+
+          <div class="shap-row" data-val="+0.31" data-feat="Feature B">
+            <div class="shap-label-col">
+              <span class="shap-label">Feature B</span>
+              <span class="shap-sub">Biomarker Component 2</span>
+            </div>
+            <div class="shap-bar-track">
+              <div class="shap-zero-axis"></div>
+              <div class="shap-bar shap-bar-pos" style="width: 55%;">
+                <span class="bar-num">+0.31</span>
+              </div>
+            </div>
+            <div class="shap-impact-text text-cyan">Elevates Risk</div>
+          </div>
+
+          <div class="shap-row" data-val="-0.24" data-feat="Feature C">
+            <div class="shap-label-col">
+              <span class="shap-label">Feature C</span>
+              <span class="shap-sub">Protective Factor 1</span>
+            </div>
+            <div class="shap-bar-track">
+              <div class="shap-zero-axis"></div>
+              <div class="shap-bar shap-bar-neg" style="width: 44%;">
+                <span class="bar-num">-0.24</span>
+              </div>
+            </div>
+            <div class="shap-impact-text text-emerald">Protective Impact</div>
+          </div>
+
+          <div class="shap-row" data-val="+0.18" data-feat="Feature D">
+            <div class="shap-label-col">
+              <span class="shap-label">Feature D</span>
+              <span class="shap-sub">Biomarker Component 3</span>
+            </div>
+            <div class="shap-bar-track">
+              <div class="shap-zero-axis"></div>
+              <div class="shap-bar shap-bar-pos" style="width: 32%;">
+                <span class="bar-num">+0.18</span>
+              </div>
+            </div>
+            <div class="shap-impact-text text-cyan">Elevates Risk</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [K] PROPOSED RISK DASHBOARD MOCKUP SUB-SECTION -->
+      <div class="subsection">
+        <div class="section-header">
+          <span class="badge badge-mockup">ILLUSTRATIVE / MOCKUP</span>
+          <h3 class="subsection-title">Proposed Clinical Risk Dashboard Mockup</h3>
+          <p class="section-description">
+            A static, non-functional interface prototype demonstrating how clinicians would interact with model outputs, attribution breakdowns, and baseline comparisons.
+          </p>
+        </div>
+
+        <div class="dashboard-mockup glass-card">
+          <div class="dash-meta-header">
+            <div class="dash-patient-id">
+              <span class="pulse-indicator"></span>
+              Patient Profile: <strong>#BS-9402</strong> (Illustrative)
+            </div>
+            <div class="dash-status-tag">Status: Completed Simulation</div>
+          </div>
+
+          <div class="dash-metrics-grid">
+            <div class="dash-metric-box">
+              <span class="dm-label">Disease Probability</span>
+              <div class="dm-value-wrap">
+                <div class="dm-value text-cyan">78%</div>
+                <div class="dm-radial-mini">
+                  <svg viewBox="0 0 36 36" class="circular-chart-cyan">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                    <path class="circle" stroke-dasharray="78, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="dm-sub">Model Confidence Interval: ±3.4%</span>
+            </div>
+
+            <div class="dash-metric-box">
+              <span class="dm-label">Risk Level</span>
+              <div class="dm-value text-amber">Moderate</div>
+              <div class="dm-tier-bars">
+                <span class="tier-bar active"></span>
+                <span class="tier-bar active"></span>
+                <span class="tier-bar"></span>
+                <span class="tier-bar"></span>
+              </div>
+              <span class="dm-sub">Stratification Tier 2 of 4</span>
+            </div>
+
+            <div class="dash-metric-box">
+              <span class="dm-label">Model Used</span>
+              <div class="dm-value text-violet">VQC</div>
+              <span class="dm-sub">4-Qubit Variational Classifier</span>
+            </div>
+
+            <div class="dash-metric-box">
+              <span class="dm-label">Important Features</span>
+              <div class="dm-value text-emerald">Feature A, C, F</div>
+              <span class="dm-sub">Highest attribution weights</span>
+            </div>
+          </div>
+
+          <div class="dash-explanation-panel glass-card">
+            <h4>Attribution &amp; Explanation Panel</h4>
+            <p>
+              In this illustrative simulation run, <strong>Feature A</strong> and <strong>Feature F</strong> contributed positively toward the 78% probability threshold, while <strong>Feature C</strong> exerted a protective downward adjustment (-0.24). Overall classification satisfies the confidence threshold for clinical review flags.
+            </p>
+          </div>
+
+          <div class="dash-comparison-strip glass-card">
+            <div class="comp-strip-label">Comparative Baseline Execution:</div>
+            <div class="comp-strip-chips">
+              <span class="comp-chip">VQC: <strong>78%</strong></span>
+              <span class="comp-chip">QNN: <strong>76%</strong></span>
+              <span class="comp-chip">QSVM: <strong>79%</strong></span>
+              <span class="comp-chip">Classical XGBoost: <strong>77%</strong></span>
+            </div>
+          </div>
+
+          <p class="dash-caption">Example values shown are illustrative only, not actual results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [L] FEASIBILITY — #feasibility ═══════════════════ -->
+  <section id="feasibility" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+        <h2 class="section-title">Feasibility</h2>
+        <p class="section-description">
+          Engineered for immediate prototype execution on quantum simulators while maintaining architectural compatibility with future near-term NISQ hardware.
+        </p>
+      </div>
+
+      <div class="feasibility-triad-banner">
+        <div class="f-banner-pill">SMALL QUANTUM INPUTS</div>
+        <div class="f-banner-sep">+</div>
+        <div class="f-banner-pill">CLASSICAL FRONT-END</div>
+        <div class="f-banner-sep">+</div>
+        <div class="f-banner-pill">SIMULATOR / NISQ-READY</div>
+      </div>
+
+      <div class="feasibility-points-grid">
+        <div class="glass-card f-card">
+          <div class="f-card-icon">1</div>
+          <h4>Classical Preprocessing Reduces Dimensions</h4>
+          <p>By delegating massive data filtering to classical CPUs, thousands of raw clinical parameters are compressed before touching quantum registers.</p>
+        </div>
+        <div class="glass-card f-card">
+          <div class="f-card-icon">2</div>
+          <h4>PCA &amp; Feature Selection Yield Compact Spaces</h4>
+          <p>Variance-preserving dimensionality reduction targets a compact 4-to-16 feature representation suitable for realistic qubit counts.</p>
+        </div>
+        <div class="glass-card f-card">
+          <div class="f-card-icon">3</div>
+          <h4>Qiskit Aer Enables Prototyping Today</h4>
+          <p>Full development and algorithmic verification occur on local Qiskit Aer statevector and noise-model simulators without requiring physical QPU allocation.</p>
+        </div>
+        <div class="glass-card f-card">
+          <div class="f-card-icon">4</div>
+          <h4>Near-Term Hardware is a Target, Not a Dependency</h4>
+          <p>Physical quantum QPUs represent a planned future evaluation milestone, ensuring project progress is fully decoupled from hardware availability.</p>
+        </div>
+      </div>
+
+      <div class="compute-chain-diagram glass-card">
+        <div class="cchain-node"><span class="cc-badge">STAGE 1</span> CPU / GPU</div>
+        <div class="cchain-arrow">→</div>
+        <div class="cchain-node"><span class="cc-badge">STAGE 2</span> Preprocessing</div>
+        <div class="cchain-arrow">→</div>
+        <div class="cchain-node"><span class="cc-badge">STAGE 3</span> Qiskit Aer Simulator</div>
+        <div class="cchain-arrow">→</div>
+        <div class="cchain-node"><span class="cc-badge">STAGE 4</span> Quantum Models</div>
+        <div class="cchain-arrow">→</div>
+        <div class="cchain-node"><span class="cc-badge">FUTURE</span> Future Optional Quantum Hardware</div>
+      </div>
+
+      <!-- [M] CHALLENGES & MITIGATION SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">Challenges &amp; Mitigation</h3>
+        <div class="cards-grid cards-5-group">
+          <div class="glass-card cm-card">
+            <div class="cm-header">
+              <span class="cm-tag cm-tag-c">Challenge</span>
+              <h4>Few Qubits / Circuit Depth</h4>
+            </div>
+            <div class="cm-divider"></div>
+            <div class="cm-body">
+              <span class="cm-tag cm-tag-m">Mitigation</span>
+              <p>PCA dimensionality reduction + mutual-information feature selection to construct compact quantum registers.</p>
+            </div>
+          </div>
+
+          <div class="glass-card cm-card">
+            <div class="cm-header">
+              <span class="cm-tag cm-tag-c">Challenge</span>
+              <h4>Simulation Cost</h4>
+            </div>
+            <div class="cm-divider"></div>
+            <div class="cm-body">
+              <span class="cm-tag cm-tag-m">Mitigation</span>
+              <p>Compact quantum input spaces (4–8 qubits) keeping statevector simulation tractable on classical workstations.</p>
+            </div>
+          </div>
+
+          <div class="glass-card cm-card">
+            <div class="cm-header">
+              <span class="cm-tag cm-tag-c">Challenge</span>
+              <h4>Noisy / Missing Data</h4>
+            </div>
+            <div class="cm-divider"></div>
+            <div class="cm-body">
+              <span class="cm-tag cm-tag-m">Mitigation</span>
+              <p>Multi-step data cleaning + iterative imputation + robust z-score normalization and validation gates.</p>
+            </div>
+          </div>
+
+          <div class="glass-card cm-card">
+            <div class="cm-header">
+              <span class="cm-tag cm-tag-c">Challenge</span>
+              <h4>Overfitting / Dataset Bias</h4>
+            </div>
+            <div class="cm-divider"></div>
+            <div class="cm-body">
+              <span class="cm-tag cm-tag-m">Mitigation</span>
+              <p>Rigorous stratified k-fold cross-validation combined with isolated hold-out test evaluations.</p>
+            </div>
+          </div>
+
+          <div class="glass-card cm-card">
+            <div class="cm-header">
+              <span class="cm-tag cm-tag-c">Challenge</span>
+              <h4>Model Interpretability</h4>
+            </div>
+            <div class="cm-divider"></div>
+            <div class="cm-body">
+              <span class="cm-tag cm-tag-m">Mitigation</span>
+              <p>SHAP integration providing transparent mathematical feature attributions and confidence margin explanations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [N] VIABILITY SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">Viability: A Three-Stage Execution Path</h3>
+        <div class="viability-grid">
+          <div class="glass-card viab-card">
+            <div class="viab-stage-badge">Phase 1</div>
+            <h4>PROTOTYPE</h4>
+            <p>Quantum simulator development with Qiskit Aer, classical baseline implementation, end-to-end architecture prototype, and interactive dashboard mockups.</p>
+          </div>
+          <div class="glass-card viab-card">
+            <div class="viab-stage-badge">Phase 2</div>
+            <h4>VALIDATE</h4>
+            <p>Benchmarking on real-world biomedical cohorts, rigorous cross-validation, robustness stress testing, and generalization evaluation across diverse disease conditions.</p>
+          </div>
+          <div class="glass-card viab-card">
+            <div class="viab-stage-badge">Phase 3</div>
+            <h4>SCALE</h4>
+            <p>Expansion to broader disease domains, larger multi-center cohorts, near-term physical quantum device integration, and expanded molecular targets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [O] SIMULATIONS — #simulations ═══════════════════ -->
+  <section id="simulations" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Molecular Simulations &amp; Research Results</h2>
+        <p class="section-description">
+          Visualizing supplied research benchmarks and structural evaluations across designated molecular targets.
+        </p>
+      </div>
+
+      <!-- Interactive Target Workstation Switcher -->
+      <div class="sim-workstation-switcher">
+        <button class="sim-target-btn active" data-target="1ykr" id="sim-btn-1ykr">
+          <span class="btn-target-id">TARGET 01</span>
+          <span class="btn-target-name">PDB ID: 1YKR</span>
+          <span class="btn-target-plddt">pLDDT 89.07</span>
+        </button>
+        <button class="sim-target-btn" data-target="4kd1" id="sim-btn-4kd1">
+          <span class="btn-target-id">TARGET 02</span>
+          <span class="btn-target-name">PDB ID: 4KD1</span>
+          <span class="btn-target-plddt">pLDDT 91.56</span>
+        </button>
+      </div>
+
+      <!-- Simulation 01: 1YKR -->
+      <div class="simulation-block glass-card sim-panel active" id="sim-panel-1ykr">
+        <div class="sim-header">
+          <div class="sim-id-pill">Target 01</div>
+          <h3>Simulation 01 — PDB ID: 1YKR</h3>
+        </div>
+        <p class="sim-intro">Structural comparison and folding evaluation for crystallographic target 1YKR.</p>
+
+        <div class="sim-three-way-strip">
+          <div class="strip-card">
+            <span class="strip-label">Experimental PDB</span>
+            <div class="strip-img-wrap">
+              <img src="public/images/molecular/protein-structure.jpg" alt="Experimental structure 1YKR" class="strip-img" />
+              <div class="strip-hud-badge">GROUND TRUTH</div>
+            </div>
+            <span class="strip-caption">X-ray Diffraction Reference</span>
+          </div>
+          <div class="strip-card">
+            <span class="strip-label">AlphaFold-3 Reference</span>
+            <div class="strip-img-wrap">
+              <img src="public/images/molecular/structural-comparison.jpg" alt="AlphaFold-3 reference 1YKR" class="strip-img" />
+              <div class="strip-hud-badge">BENCHMARK</div>
+            </div>
+            <span class="strip-caption">Reference Fold (pLDDT ≈ 0.82)</span>
+          </div>
+          <div class="strip-card">
+            <span class="strip-label">AI-Predicted Fold</span>
+            <div class="strip-img-wrap">
+              <img src="public/images/molecular/extra-view.jpg" alt="AI-predicted fold 1YKR" class="strip-img" />
+              <div class="strip-hud-badge strip-hud-cyan">AI PREDICTION</div>
+            </div>
+            <span class="strip-caption">Predicted Model (pLDDT: 89.07)</span>
+          </div>
+        </div>
+
+        <div class="plddt-callout glass-card">
+          <div class="plddt-metrics">
+            <div class="plddt-item">
+              <span class="plddt-val text-cyan">89.07</span>
+              <span class="plddt-tag">AI-Predicted pLDDT</span>
+            </div>
+            <div class="plddt-sep">vs</div>
+            <div class="plddt-item">
+              <span class="plddt-val text-muted">≈ 0.82</span>
+              <span class="plddt-tag">AlphaFold-3 Reference</span>
+            </div>
+          </div>
+          <p class="plddt-explainer">pLDDT is a structural-confidence metric.</p>
+        </div>
+
+        <div class="sim-educational-block">
+          <div class="edu-title">Target Analysis Components:</div>
+          <ul class="edu-list">
+            <li>Structural comparison</li>
+            <li>Folding visualization</li>
+            <li>AI structure prediction</li>
+            <li>pLDDT visualization</li>
+            <li>Ligand docking</li>
+            <li>Affinity-score comparison</li>
+          </ul>
+        </div>
+        <p class="sim-caption">This section visualizes the supplied research results for the 1YKR molecular target.</p>
+      </div>
+
+      <!-- Simulation 02: 4KD1 -->
+      <div class="simulation-block glass-card sim-panel" id="sim-panel-4kd1">
+        <div class="sim-header">
+          <div class="sim-id-pill">Target 02</div>
+          <h3>Simulation 02 — PDB ID: 4KD1</h3>
+        </div>
+        <p class="sim-intro">Structural folding and docking affinity benchmarks for crystallographic target 4KD1.</p>
+
+        <div class="sim-three-way-strip">
+          <div class="strip-card">
+            <span class="strip-label">Experimental PDB</span>
+            <div class="strip-img-wrap">
+              <img src="public/images/molecular/binding-pocket.jpg" alt="Experimental structure 4KD1" class="strip-img" />
+              <div class="strip-hud-badge">GROUND TRUTH</div>
+            </div>
+            <span class="strip-caption">Crystallographic Ground Truth</span>
+          </div>
+          <div class="strip-card">
+            <span class="strip-label">AlphaFold-3 Reference</span>
+            <div class="strip-img-wrap">
+              <img src="public/images/molecular/molecular-surface.jpg" alt="AlphaFold-3 reference 4KD1" class="strip-img" />
+              <div class="strip-hud-badge">BENCHMARK</div>
+            </div>
+            <span class="strip-caption">Structural Benchmark</span>
+          </div>
+          <div class="strip-card">
+            <span class="strip-label">AI-Predicted Fold</span>
+            <div class="strip-img-wrap">
+              <img src="public/images/molecular/interaction-analysis.jpg" alt="AI-predicted fold 4KD1" class="strip-img" />
+              <div class="strip-hud-badge strip-hud-cyan">AI MODEL</div>
+            </div>
+            <span class="strip-caption">AI Structural Model</span>
+          </div>
+        </div>
+
+        <div class="plddt-callout glass-card">
+          <div class="plddt-metrics">
+            <div class="plddt-item">
+              <span class="plddt-val text-cyan">91.56</span>
+              <span class="plddt-tag">AI-Predicted pLDDT</span>
+            </div>
+          </div>
+          <p class="plddt-explainer">pLDDT is a structural-confidence metric.</p>
+        </div>
+
+        <!-- 4KD1 Docking Affinity Table with Search Filter -->
+        <div class="docking-table-wrap">
+          <div class="table-action-header">
+            <h4 class="table-subtitle">4KD1 Docking Affinity Benchmark (kcal/mol)</h4>
+            <div class="table-search-box">
+              <input type="text" id="docking-search-input" placeholder="Filter ligands..." aria-label="Filter ligands table" />
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="qml-table" id="docking-affinity-table">
+              <thead>
+                <tr>
+                  <th>Ligand</th>
+                  <th>AutoDock</th>
+                  <th>CB-Dock 2</th>
+                  <th>Flare PRO+</th>
+                  <th>Our AI Model</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>N-phenylH-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-6.77</td>
+                  <td>-6.3</td>
+                  <td>-6.52</td>
+                  <td class="cell-hl">-6.97</td>
+                </tr>
+                <tr>
+                  <td>1-(imidazo[1,2-a]pyridine-8-carbonyl)spiro[chromene-2,4'-piperidine]-4-one</td>
+                  <td>-9.34</td>
+                  <td>-8.1</td>
+                  <td>-6.79</td>
+                  <td class="cell-hl">-9.29</td>
+                </tr>
+                <tr>
+                  <td>N-benzylH-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-6.38</td>
+                  <td>-6.8</td>
+                  <td>-6.85</td>
+                  <td class="cell-hl">-6.45</td>
+                </tr>
+                <tr>
+                  <td>N-(4-methoxybenzyl)H-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-6.81</td>
+                  <td>-7.2</td>
+                  <td>-7.12</td>
+                  <td class="cell-hl">-6.74</td>
+                </tr>
+                <tr>
+                  <td>N-((naphthalen-1-yl)methyl)H-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-7.22</td>
+                  <td>-8.0</td>
+                  <td>-6.91</td>
+                  <td class="cell-hl">-7.31</td>
+                </tr>
+                <tr>
+                  <td>N-(2-iodophenyl)H-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-7.45</td>
+                  <td>-6.4</td>
+                  <td>-8.66</td>
+                  <td class="cell-hl">-7.50</td>
+                </tr>
+                <tr>
+                  <td>N-(4-iodophenyl)H-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-7.36</td>
+                  <td>-7.7</td>
+                  <td>-7.49</td>
+                  <td class="cell-hl">-7.67</td>
+                </tr>
+                <tr>
+                  <td>N-(3-fluoro-5-methylphenyl)H-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-6.80</td>
+                  <td>-7.2</td>
+                  <td>-7.47</td>
+                  <td class="cell-hl">-7.19</td>
+                </tr>
+                <tr>
+                  <td>N-(3-nitrophenyl)H-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-7.33</td>
+                  <td>-7.0</td>
+                  <td>-6.90</td>
+                  <td class="cell-hl">-7.30</td>
+                </tr>
+                <tr>
+                  <td>N-(4-fluorophenyl)H-imidazo[1,2-a]pyridine-8-carboxamide</td>
+                  <td>-6.38</td>
+                  <td>-6.6</td>
+                  <td>-7.31</td>
+                  <td class="cell-hl">-6.54</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="sim-educational-block">
+          <div class="edu-title">Target Analysis Components:</div>
+          <ul class="edu-list">
+            <li>Structural comparison</li>
+            <li>Folding visualization</li>
+            <li>AI structure prediction</li>
+            <li>pLDDT visualization</li>
+            <li>Ligand docking</li>
+            <li>Affinity-score comparison</li>
+          </ul>
+        </div>
+        <p class="sim-caption">This section visualizes the supplied research results for the 4KD1 molecular target.</p>
+        <p class="sim-closing-statement">
+          These molecular simulations provide complementary research evidence for the molecular-analysis direction of the project. They are separate from the proposed quantum disease-classification experiments.
+        </p>
+      </div>
+
+      <!-- [P] RESEARCH EVIDENCE (PAPER METRICS) SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">Research Evidence</h3>
+        <p class="subsection-intro">Reported structural metrics from the supporting molecular research paper.</p>
+        <div class="cards-grid cards-6-evidence">
+          <div class="glass-card stat-card" data-stat="1.27">
+            <div class="stat-num text-cyan" id="stat-1">1.27</div>
+            <div class="stat-unit">kcal/mol</div>
+            <div class="stat-label">RMSE</div>
+            <p class="stat-desc">Root-mean-square error in binding free energy prediction.</p>
+          </div>
+          <div class="glass-card stat-card" data-stat="83.6">
+            <div class="stat-num text-emerald" id="stat-2">83.6%</div>
+            <div class="stat-unit">Top-1 pose</div>
+            <div class="stat-label">RMSD &lt;2Å</div>
+            <p class="stat-desc">Percentage of top-ranked ligand poses within 2Å of experimental binding pose.</p>
+          </div>
+          <div class="glass-card stat-card" data-stat="80.03">
+            <div class="stat-num text-blue" id="stat-3">80.03%</div>
+            <div class="stat-unit">Mean Success</div>
+            <div class="stat-label">Binding Success</div>
+            <p class="stat-desc">Average success rate across diversified test complex cohorts.</p>
+          </div>
+          <div class="glass-card stat-card" data-stat="-11.4">
+            <div class="stat-num text-violet" id="stat-4">-11.4</div>
+            <div class="stat-unit">kcal/mol</div>
+            <div class="stat-label">Mean Docking Score</div>
+            <p class="stat-desc">Calculated mean binding free energy across evaluated complexes.</p>
+          </div>
+          <div class="glass-card stat-card" data-stat="0.804">
+            <div class="stat-num text-magenta" id="stat-5">0.804</div>
+            <div class="stat-unit">Score</div>
+            <div class="stat-label">DockQ</div>
+            <p class="stat-desc">Docking quality metric reflecting high-confidence interface prediction.</p>
+          </div>
+          <div class="glass-card stat-card" data-stat="90.3">
+            <div class="stat-num text-cyan" id="stat-6">90.3</div>
+            <div class="stat-unit">Score</div>
+            <div class="stat-label">LDDT</div>
+            <p class="stat-desc">Local Distance Difference Test indicating high local structural accuracy.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- [Q] ARCHITECTURAL JUSTIFICATION (ABLATION) SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">Why Architecture Components Matter</h3>
+        <div class="ablation-grid">
+          <div class="glass-card ab-card">
+            <h4>SE(3) Equivariance</h4>
+            <p>Preserves spatial symmetry under 3D translation and rotation transformations in molecular space.</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Message Passing</h4>
+            <p>Facilitates atom-to-atom and residue-level biological feature updates across the graph network.</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Iterative Refinement</h4>
+            <p>Progressively optimizes 3D coordinates across successive layer blocks to minimize structural drift.</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Torsional Updates</h4>
+            <p>Directly parameterizes flexible dihedral and rotatable bond angles during ligand conformation.</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Curvature Features</h4>
+            <p>Encodes surface curvature to accurately detect complementary receptor binding pocket contours.</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Radial Basis Features</h4>
+            <p>Projects inter-atomic Euclidean distances onto continuous Gaussian kernel bases.</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Clash Penalty</h4>
+            <p>Enforces steric hindrance constraints to penalize physically impossible atom-atom overlap.</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Coordinate Loss</h4>
+            <p>Calculates explicit loss against ground-truth crystallographic coordinates during training.</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Affinity Head</h4>
+            <p>Specialized regression head predicting binding affinity free energy values (kcal/mol).</p>
+          </div>
+          <div class="glass-card ab-card">
+            <h4>Mish Activation</h4>
+            <p>Smooth, non-monotonic activation function preventing gradient saturation in deep layers.</p>
+          </div>
+        </div>
+        <p class="section-closing">
+          These architectural components are reported to affect performance when removed or modified.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [R] INNOVATION & [S] IMPACT — #impact ═══════════════════ -->
+  <section id="impact" class="section">
+    <div class="container">
+      <!-- [R] INNOVATION SUB-SECTION -->
+      <div class="section-header">
+        <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+        <h2 class="section-title">What Makes the Proposed BioSync Architecture Different?</h2>
+        <p class="section-description">
+          A layered architectural stack integrating classical efficiency with quantum exploration.
+        </p>
+      </div>
+
+      <!-- 3D Layered Innovation Stack (WOW #5) -->
+      <div class="innovation-stack-wrap glass-card" id="innovation-3d-stack">
+        <div class="istack-layer" data-istack="6">
+          <span class="il-num">06</span>
+          <div class="il-content">
+            <h4>Complementary Molecular Analysis</h4>
+            <p>Structural modeling and binding affinity validation provide molecular-level biological grounding.</p>
+          </div>
+          <span class="il-badge">GROUNDING</span>
+        </div>
+        <div class="istack-layer" data-istack="5">
+          <span class="il-num">05</span>
+          <div class="il-content">
+            <h4>Risk Assessment</h4>
+            <p>Continuous disease probabilities mapped into actionable, stratified clinical risk tiers.</p>
+          </div>
+          <span class="il-badge">CLINICAL</span>
+        </div>
+        <div class="istack-layer" data-istack="4">
+          <span class="il-num">04</span>
+          <div class="il-content">
+            <h4>SHAP Explainability</h4>
+            <p>Shapley additive explanations attribute predictive weight to transparent biomedical biomarkers.</p>
+          </div>
+          <span class="il-badge">TRANSPARENCY</span>
+        </div>
+        <div class="istack-layer" data-istack="3">
+          <span class="il-num">03</span>
+          <div class="il-content">
+            <h4>Classical Benchmarking</h4>
+            <p>Side-by-side empirical baselines (SVM, RF, XGBoost) ensure transparent and uninflated comparison.</p>
+          </div>
+          <span class="il-badge">BENCHMARK</span>
+        </div>
+        <div class="istack-layer" data-istack="2">
+          <span class="il-num">02</span>
+          <div class="il-content">
+            <h4>Hybrid Quantum ML</h4>
+            <p>Multi-paradigm quantum circuits (VQC, QNN, QSVM) explore complex correlations in Hilbert space.</p>
+          </div>
+          <span class="il-badge">QUANTUM</span>
+        </div>
+        <div class="istack-layer" data-istack="1">
+          <span class="il-num">01</span>
+          <div class="il-content">
+            <h4>Dimensionality Reduction</h4>
+            <p>Classical PCA and feature selection compress massive datasets down to quantum-compatible dimensions.</p>
+          </div>
+          <span class="il-badge">COMPRESSION</span>
+        </div>
+      </div>
+
+      <!-- [S] IMPACT & BENEFITS -->
+      <div class="subsection">
+        <h3 class="subsection-title">Impact &amp; Benefits</h3>
+
+        <!-- Four Dimensions -->
+        <div class="dimensions-grid">
+          <div class="glass-card dim-card">
+            <div class="dim-icon-pill">🌐</div>
+            <h4>Social</h4>
+            <p>Earlier risk identification and interpretable analysis improve timely patient interventions.</p>
+          </div>
+          <div class="glass-card dim-card">
+            <div class="dim-icon-pill">📈</div>
+            <h4>Economic</h4>
+            <p>Streamlines computational screening and multi-model benchmarking to lower exploratory overhead.</p>
+          </div>
+          <div class="glass-card dim-card">
+            <div class="dim-icon-pill">⚙️</div>
+            <h4>Technical</h4>
+            <p>Reusable architecture applicable across high-dimensional heterogeneous biomedical datasets.</p>
+          </div>
+          <div class="glass-card dim-card">
+            <div class="dim-icon-pill">🔬</div>
+            <h4>Research</h4>
+            <p>Structured framework for empirical quantum vs. classical machine learning investigation.</p>
+          </div>
+        </div>
+
+        <!-- Target Users & Domains -->
+        <div class="users-domains-grid">
+          <div class="glass-card ud-card">
+            <span class="ud-tag">Target Users</span>
+            <div class="ud-chips">
+              <span>Researchers</span>
+              <span>Clinical Analysts</span>
+              <span>Healthcare AI Teams</span>
+            </div>
+          </div>
+          <div class="glass-card ud-card">
+            <span class="ud-tag">Applicable Domains</span>
+            <div class="ud-chips">
+              <span>Cancer</span>
+              <span>Cardiovascular Disorders</span>
+              <span>Neurological Conditions</span>
+              <span>Biomedical Datasets</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 Benefit Cards (Identical Size Rule) -->
+        <div class="cards-grid cards-8-group">
+          <div class="glass-card benefit-card">
+            <h4>Heterogeneous Data Handling</h4>
+            <p>Designed to ingest and normalize genomic variants, electronic health records, imaging, and tabular trials.</p>
+          </div>
+          <div class="glass-card benefit-card">
+            <h4>Quantum-Compatible Feature Space</h4>
+            <p>Employs variance-preserving PCA to create compact numerical representations suited for NISQ circuit depths.</p>
+          </div>
+          <div class="glass-card benefit-card">
+            <h4>Multiple Quantum Approaches</h4>
+            <p>Evaluates VQC, QNN, and QSVM models side-by-side rather than presuming a single quantum paradigm.</p>
+          </div>
+          <div class="glass-card benefit-card">
+            <h4>Classical Benchmarking</h4>
+            <p>Evaluates quantum models against SVM, Random Forest, and XGBoost baselines using identical test splits.</p>
+          </div>
+          <div class="glass-card benefit-card">
+            <h4>Explainable Predictions</h4>
+            <p>Integrates SHAP attribution values to provide transparent feature contribution scores for clinicians.</p>
+          </div>
+          <div class="glass-card benefit-card">
+            <h4>Risk Visualization</h4>
+            <p>Presents calibrated probability scores and stratified risk levels through a clear decision-support interface.</p>
+          </div>
+          <div class="glass-card benefit-card">
+            <h4>Simulator/NISQ Architecture</h4>
+            <p>Supports immediate execution on Qiskit Aer simulators while remaining ready for future physical QPUs.</p>
+          </div>
+          <div class="glass-card benefit-card">
+            <h4>Reusable Framework</h4>
+            <p>Modular pipeline adaptable to multiple disease categories and research classification tasks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- [T] FUTURE ROADMAP SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">What We Aim to Build Next</h3>
+        <div class="roadmap-timeline">
+          <div class="timeline-step">
+            <div class="tstep-num">01</div>
+            <div class="tstep-content">
+              <h4>Architecture Prototype</h4>
+              <p>Formalize pipeline interfaces, data converters, and simulation schemas.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="tstep-num">02</div>
+            <div class="tstep-content">
+              <h4>Quantum Simulator Experiments</h4>
+              <p>Construct 4-to-8 qubit ansatz circuits using Qiskit Aer statevector simulators.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="tstep-num">03</div>
+            <div class="tstep-content">
+              <h4>Biomedical Dataset Validation</h4>
+              <p>Ingest public benchmark cohorts for preprocessing and feature reduction.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="tstep-num">04</div>
+            <div class="tstep-content">
+              <h4>Quantum vs Classical Benchmarking</h4>
+              <p>Run cross-validated comparisons against SVM, Random Forest, and XGBoost.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="tstep-num">05</div>
+            <div class="tstep-content">
+              <h4>SHAP Explainability</h4>
+              <p>Incorporate KernelSHAP calculation pipeline for predictive transparency.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="tstep-num">06</div>
+            <div class="tstep-content">
+              <h4>Risk Dashboard</h4>
+              <p>Develop interactive front-end displaying stratified risk scores and attributions.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="tstep-num">07</div>
+            <div class="tstep-content">
+              <h4>Robustness Testing</h4>
+              <p>Stress-test pipeline against synthetic noise, missing values, and dataset shifts.</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="tstep-num">08</div>
+            <div class="tstep-content">
+              <h4>Near-Term Quantum Hardware Exploration</h4>
+              <p>Test compiled circuits on physical NISQ quantum hardware platforms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- [U] PROPOSED VS EVIDENCE DISTINCTION SUB-SECTION -->
+      <div class="subsection">
+        <h3 class="subsection-title">System Scope &amp; Research Distinction</h3>
+        <p class="subsection-intro">Maintaining absolute transparency between proposed system architecture and supporting research evidence.</p>
+        <div class="distinction-two-col">
+          <div class="glass-card dist-card dist-proposed">
+            <div class="dist-header-badge">
+              <span class="badge badge-proposed">PROPOSED SYSTEM</span>
+            </div>
+            <h4 class="dist-title">Proposed BioSync System</h4>
+            <ul class="dist-list">
+              <li>Biomedical data preprocessing pipeline</li>
+              <li>Variational Quantum Classifier (VQC) architecture</li>
+              <li>Quantum Neural Network (QNN) modeling</li>
+              <li>Quantum Support Vector Machine (QSVM) kernels</li>
+              <li>Classical baseline models (SVM, RF, XGBoost)</li>
+              <li>SHAP explainability engine</li>
+              <li>Clinical decision-support risk dashboard</li>
+            </ul>
+          </div>
+          <div class="glass-card dist-card dist-evidence">
+            <div class="dist-header-badge">
+              <span class="badge-evidence-tag">RESEARCH EVIDENCE</span>
+            </div>
+            <h4 class="dist-title">Molecular Research Evidence</h4>
+            <ul class="dist-list">
+              <li>Experimental macromolecular structures</li>
+              <li>PDB ID 1YKR validation target</li>
+              <li>PDB ID 4KD1 docking evaluation</li>
+              <li>AI protein structure prediction models</li>
+              <li>Multi-tool docking affinity comparisons</li>
+              <li>Published structural metrics (RMSE, RMSD, LDDT)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [V] REFERENCES — #research ═══════════════════ -->
+  <section id="research" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">References</h2>
+        <p class="section-description">Scholarly foundations, hackathon problem framing, and supporting literature.</p>
+      </div>
+      <div class="references-list">
+        <div class="glass-card ref-card">
+          <div class="ref-num">01</div>
+          <div class="ref-content">
+            <h4>Smart India Hackathon Problem Statement 26139</h4>
+            <p>Hybrid Quantum Machine Learning Platform for Early Disease Detection. Ministry of Education, Government of India (2026).</p>
+          </div>
+          <div class="ref-action-icon">↗</div>
+        </div>
+        <div class="glass-card ref-card">
+          <div class="ref-num">02</div>
+          <div class="ref-content">
+            <h4>TANKBind: Trigonometry-Aware Neural Networks for Drug-Protein Binding Structure Prediction</h4>
+            <p>Advances in Neural Information Processing Systems (NeurIPS), detailing trigonometric message passing and structural binding predictions.</p>
+          </div>
+          <div class="ref-action-icon">↗</div>
+        </div>
+        <div class="glass-card ref-card">
+          <div class="ref-num">03</div>
+          <div class="ref-content">
+            <h4>“Artificial intelligence to deep learning: machine intelligence approach for drug discovery”</h4>
+            <p>Comprehensive review of computational screening, predictive binding architectures, and machine learning pipelines in pharmaceutical research.</p>
+          </div>
+          <div class="ref-action-icon">↗</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [W] TEAM — #team ═══════════════════ -->
+  <section id="team" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Team BioSync</h2>
+        <p class="section-description">
+          Smart India Hackathon 2026 Submission Team · Problem Statement ID 26139
+        </p>
+      </div>
+
+      <!-- 6 Team Cards (Strict Order & Identical Size Rule) -->
+      <div class="cards-grid cards-6-team">
+        <div class="glass-card team-card team-lead-card">
+          <div class="team-avatar-ring">
+            <div class="team-avatar"><span>AB</span></div>
+          </div>
+          <h3 class="team-name">Ayushkumar Bhoi</h3>
+          <span class="team-role-tag team-role-lead">Team Leader</span>
+        </div>
+        <div class="glass-card team-card">
+          <div class="team-avatar-ring">
+            <div class="team-avatar"><span>OD</span></div>
+          </div>
+          <h3 class="team-name">Omkumar Dhameliya</h3>
+          <span class="team-role-tag">Team Member</span>
+        </div>
+        <div class="glass-card team-card">
+          <div class="team-avatar-ring">
+            <div class="team-avatar"><span>DB</span></div>
+          </div>
+          <h3 class="team-name">Darsh Boghra</h3>
+          <span class="team-role-tag">Team Member</span>
+        </div>
+        <div class="glass-card team-card">
+          <div class="team-avatar-ring">
+            <div class="team-avatar"><span>KV</span></div>
+          </div>
+          <h3 class="team-name">Kushal Vaghela</h3>
+          <span class="team-role-tag">Team Member</span>
+        </div>
+        <div class="glass-card team-card">
+          <div class="team-avatar-ring">
+            <div class="team-avatar"><span>HB</span></div>
+          </div>
+          <h3 class="team-name">Het Bhimani</h3>
+          <span class="team-role-tag">Team Member</span>
+        </div>
+        <div class="glass-card team-card">
+          <div class="team-avatar-ring">
+            <div class="team-avatar"><span>LB</span></div>
+          </div>
+          <h3 class="team-name">Lency Bhatt</h3>
+          <span class="team-role-tag">Team Member</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ [X] CLOSING / FOOTER ═══════════════════ -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-cta-block">
+        <h2 class="footer-hero-text">BIO•SYNC — Building a Hybrid Quantum–Classical Future for Biomedical Intelligence</h2>
+        <p class="footer-subtext">
+          From complex biomedical data to quantum-enhanced learning, explainable predictions and research-driven decision support.
+        </p>
+        <div class="footer-btn-group">
+          <a href="#quantum-ml" class="btn btn-primary">
+            <span>Explore Quantum Architecture</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#molecular-research" class="btn btn-secondary">
+            <span>Explore Molecular Research</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="footer-meta">
+          Smart India Hackathon 2026 · Problem Statement 26139 · BioSync
+        </div>
+        <div class="footer-links">
+          <a href="#overview">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Gallery Zoom -->
+  <div class="lightbox-modal" id="lightbox-modal" aria-hidden="true" role="dialog" aria-label="Expanded Image View">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close image modal">&times;</button>
+      <img src="" alt="" class="lightbox-img" id="lightbox-img" />
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button class="floating-top-btn" id="floating-top-btn" aria-label="Scroll back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
