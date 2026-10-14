@@ -9,6 +9,113 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Critical Pre-flight System Loader Styles */
+    #biosync-loader {
+      position: fixed;
+      inset: 0;
+      background: #F0FDF4 !important;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #biosync-loader.loader-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #biosync-loader .loader-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 440px;
+      width: 90%;
+      padding: 38px 36px;
+      background: #FFFFFF !important;
+      border: 1px solid #D1FAE5 !important;
+      border-radius: 20px !important;
+      box-shadow: 0 20px 45px -15px rgba(6, 78, 59, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.08) !important;
+    }
+    #biosync-loader .loader-branding {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      line-height: 1;
+    }
+    #biosync-loader .loader-bio {
+      color: #064E3B !important;
+      -webkit-text-fill-color: #064E3B !important;
+      font-weight: 800 !important;
+    }
+    #biosync-loader .loader-sync {
+      color: #059669 !important;
+      -webkit-text-fill-color: #059669 !important;
+      font-weight: 800 !important;
+      text-shadow: none !important;
+    }
+    #biosync-loader .loader-bar-wrap {
+      width: 100%;
+      max-width: 280px;
+      height: 6px;
+      background: #E2FBE8 !important;
+      border: 1px solid #D1FAE5 !important;
+      border-radius: 999px !important;
+      overflow: hidden;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    #biosync-loader .loader-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #059669 0%, #10B981 100%) !important;
+      border-radius: 999px !important;
+      box-shadow: 0 0 10px rgba(5, 150, 105, 0.35) !important;
+      transition: width 0.08s linear;
+    }
+    #biosync-loader .loader-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #064E3B !important;
+      -webkit-text-fill-color: #064E3B !important;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    #biosync-loader .loader-telemetry-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #059669 !important;
+      box-shadow: 0 0 8px rgba(5, 150, 105, 0.6) !important;
+      animation: pulse-dot 1s infinite alternate;
+      flex-shrink: 0;
+    }
+    #biosync-loader .loader-status-text {
+      color: #064E3B !important;
+      -webkit-text-fill-color: #064E3B !important;
+      font-weight: 700 !important;
+    }
+    #biosync-loader .loader-sub-telemetry {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #047857 !important;
+      -webkit-text-fill-color: #047857 !important;
+      letter-spacing: 0.06em;
+    }
+  </style>
 </head>
 <body>
 

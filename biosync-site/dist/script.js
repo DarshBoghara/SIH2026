@@ -175,7 +175,17 @@ function initNav() {
     });
   });
 
-  // Close dropdowns on click outside
+  // Close dropdowns on click outside or when selecting an item
+  document.querySelectorAll('.dropdown-card-item').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.nav-has-dropdown.open').forEach(d => {
+        d.classList.remove('open');
+        const t = d.querySelector('.nav-dropdown-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.nav-has-dropdown')) {
       document.querySelectorAll('.nav-has-dropdown.open').forEach(d => {
