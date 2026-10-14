@@ -4588,39 +4588,40 @@ svg polygon:not([fill]):not(.fill-allowed) {
   transform: rotate(180deg) !important;
 }
 
-/* 2. Executive Floating Dropdown Panel (Hidden by Default!) */
+/* 2. Executive Floating Dropdown Panel (Anchored to Trigger Button) */
 .nav-dropdown-panel {
   position: absolute !important;
-  top: calc(100% + 8px) !important;
-  left: 50% !important;
-  transform: translateX(-50%) translateY(8px) !important;
-  width: 370px !important;
+  top: calc(100% + 6px) !important;
+  left: 0 !important;
+  transform: translateY(6px) !important;
+  width: 410px !important;
+  max-width: min(410px, 92vw) !important;
   background: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
+  border: 1px solid #D1FAE5 !important;
   border-radius: 14px !important;
-  padding: 10px !important;
-  box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.12), 0 8px 12px -6px rgba(15, 23, 42, 0.06) !important;
+  padding: 8px !important;
+  box-shadow: 0 16px 36px -6px rgba(6, 78, 59, 0.14), 0 6px 14px -4px rgba(6, 78, 59, 0.06) !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
-  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s ease !important;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease !important;
   z-index: 1200 !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 4px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
+/* Eliminate protruding triangular notch so no portion of line pokes out of card */
 .nav-dropdown-panel::before {
-  content: '' !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: 50% !important;
-  transform: translateX(-50%) rotate(45deg) !important;
-  width: 12px !important;
-  height: 12px !important;
-  background: #FFFFFF !important;
-  border-left: 1px solid #E2E8F0 !important;
-  border-top: 1px solid #E2E8F0 !important;
+  display: none !important;
+}
+
+/* Right-align dropdown for items near the right edge */
+.nav-links > .nav-item:nth-last-child(2) .nav-dropdown-panel {
+  left: auto !important;
+  right: 0 !important;
 }
 
 .nav-has-dropdown:hover .nav-dropdown-panel,
@@ -4629,7 +4630,7 @@ svg polygon:not([fill]):not(.fill-allowed) {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
-  transform: translateX(-50%) translateY(0) !important;
+  transform: translateY(0) !important;
 }
 
 .dropdown-card-item {
@@ -4642,15 +4643,22 @@ svg polygon:not([fill]):not(.fill-allowed) {
   transition: all 0.16s ease !important;
   border: 1px solid transparent !important;
   background: transparent !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  overflow: hidden !important;
 }
 
 .dropdown-card-item:hover {
-  background: #F8FAFC !important;
-  border-color: #E2E8F0 !important;
-  transform: translateX(4px) !important;
+  background: #F0FDF4 !important;
+  border-color: #D1FAE5 !important;
+  transform: translateX(3px) !important;
 }
 
-.dropdown-icon-box {
+.dropdown-icon-box,
+.dropdown-icon-box.cyan,
+.dropdown-icon-box.indigo,
+.dropdown-icon-box.violet,
+.dropdown-icon-box.emerald {
   width: 36px !important;
   height: 36px !important;
   border-radius: 8px !important;
@@ -4658,58 +4666,63 @@ svg polygon:not([fill]):not(.fill-allowed) {
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
-  background: #EFF6FF !important;
-  color: #2563EB !important;
-  border: 1px solid #DBEAFE !important;
+  background: #F0FDF4 !important;
+  color: #059669 !important;
+  border: 1px solid #D1FAE5 !important;
+  transition: all 0.16s ease !important;
 }
+
 .dropdown-icon-box svg {
   stroke: currentColor !important;
   fill: none !important;
 }
-.dropdown-icon-box.cyan {
-  background: #ECFEFF !important;
-  color: #06B6D4 !important;
-  border-color: #CFFAFE !important;
-}
-.dropdown-icon-box.indigo {
-  background: #EEF2FF !important;
-  color: #4F46E5 !important;
-  border-color: #E0E7FF !important;
-}
-.dropdown-icon-box.violet {
-  background: #F5F3FF !important;
-  color: #7C3AED !important;
-  border-color: #EDE9FE !important;
-}
-.dropdown-icon-box.emerald {
-  background: #ECFDF5 !important;
-  color: #059669 !important;
-  border-color: #D1FAE5 !important;
+
+.dropdown-card-item:hover .dropdown-icon-box,
+.dropdown-card-item:hover .dropdown-icon-box.cyan,
+.dropdown-card-item:hover .dropdown-icon-box.indigo,
+.dropdown-card-item:hover .dropdown-icon-box.violet,
+.dropdown-card-item:hover .dropdown-icon-box.emerald {
+  background: #DCFCE7 !important;
+  border-color: #A7F3D0 !important;
+  color: #047857 !important;
 }
 
 .dropdown-item-text {
   display: flex !important;
   flex-direction: column !important;
   gap: 2px !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
 }
 
 .dropdown-item-title {
-  font-family: var(--font-display) !important;
-  font-size: 0.86rem !important;
+  font-family: var(--font-body), 'Inter', -apple-system, sans-serif !important;
+  font-size: 0.88rem !important;
   font-weight: 600 !important;
-  color: #0F172A !important;
-  transition: color 0.15s ease !important;
-}
-
-.dropdown-item-desc {
-  font-family: var(--font-body) !important;
-  font-size: 0.72rem !important;
-  color: #64748B !important;
+  color: #064E3B !important;
   line-height: 1.3 !important;
+  letter-spacing: -0.01em !important;
+  transition: color 0.15s ease !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 .dropdown-card-item:hover .dropdown-item-title {
-  color: #2563EB !important;
+  color: #059669 !important;
+}
+
+.dropdown-item-desc {
+  font-family: var(--font-body), 'Inter', -apple-system, sans-serif !important;
+  font-size: 0.76rem !important;
+  color: #4B6358 !important;
+  line-height: 1.35 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  display: block !important;
+  max-width: 100% !important;
 }
 
 /* 3. Hero Section Typography & Visual Clarity */
@@ -5009,9 +5022,7 @@ p, .section-description, .card-prop, .text-muted {
   box-shadow: 0 20px 35px -5px rgba(6, 78, 59, 0.12), 0 8px 12px -6px rgba(6, 78, 59, 0.06) !important;
 }
 .nav-dropdown-panel::before {
-  background: #FFFFFF !important;
-  border-left: 1px solid #D1FAE5 !important;
-  border-top: 1px solid #D1FAE5 !important;
+  display: none !important;
 }
 .dropdown-card-item:hover {
   background: #F0FDF4 !important;
@@ -6358,17 +6369,18 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .dropdown-item-title {
-  font-family: var(--font-display) !important;
-  font-weight: 700 !important;
-  font-size: 0.92rem !important;
+  font-family: var(--font-body), 'Inter', -apple-system, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
   color: #064E3B !important;
+  letter-spacing: -0.01em !important;
 }
 
 .dropdown-item-desc {
-  font-family: var(--font-body) !important;
-  font-size: 0.82rem !important;
-  line-height: 1.4 !important;
-  color: #334D41 !important;
+  font-family: var(--font-body), 'Inter', -apple-system, sans-serif !important;
+  font-size: 0.78rem !important;
+  line-height: 1.35 !important;
+  color: #4B6358 !important;
 }
 
 /* 4. Button Typography */
