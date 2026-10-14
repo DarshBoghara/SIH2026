@@ -303,7 +303,7 @@ function initHeroMotion() {
       line.setAttribute('y1', '260');
       line.setAttribute('x2', pos.x.toFixed(1));
       line.setAttribute('y2', pos.y.toFixed(1));
-      line.setAttribute('stroke', 'rgba(37, 99, 235, 0.25)');
+      line.setAttribute('stroke', 'rgba(5, 150, 105, 0.22)');
       line.setAttribute('stroke-width', '1.2');
       line.setAttribute('stroke-dasharray', '3 4');
       connectorsGroup.appendChild(line);
@@ -315,67 +315,55 @@ function initHeroMotion() {
       ringLine.setAttribute('y1', pos.y.toFixed(1));
       ringLine.setAttribute('x2', nextPos.x.toFixed(1));
       ringLine.setAttribute('y2', nextPos.y.toFixed(1));
-      ringLine.setAttribute('stroke', 'rgba(226, 232, 240, 0.8)');
+      ringLine.setAttribute('stroke', 'rgba(167, 243, 208, 0.6)');
       ringLine.setAttribute('stroke-width', '1');
       connectorsGroup.appendChild(ringLine);
     });
   }
 
-  // 9-Step Computational Data Cycle
+  // Exactly 7 Steps: Clean 1-to-1 Sequential Mapping to the 7 Architecture Nodes
   const sequenceSteps = [
     {
       activeNode: 0,
       phase: 'STAGE 01',
       status: '1. Ingesting Multi-Omic & Clinical Streams',
-      pipeline: 'INGESTION ACTIVE'
+      pipeline: 'DATA INGESTION'
     },
     {
       activeNode: 1,
       phase: 'STAGE 02',
-      status: '2. Preprocessing: Imputation & Filtering',
+      status: '2. Preprocessing, Cleaning & PCA Compression',
       pipeline: 'PREPROCESSING'
     },
     {
-      activeNode: 1,
+      activeNode: 2,
       phase: 'STAGE 03',
-      status: '3. Data Compression: PCA Orthogonal Reduction',
-      pipeline: 'PCA COMPRESSION'
-    },
-    {
-      activeNode: 2,
-      phase: 'STAGE 04',
-      status: '4. Quantum Feature Mapping: Angle Encoding',
-      pipeline: 'HILBERT MAPPING'
-    },
-    {
-      activeNode: 2,
-      phase: 'STAGE 05',
-      status: '5. Quantum Circuit Execution: Parameterized Ansatz',
-      pipeline: 'VQC / QNN / QSVM'
+      status: '3. Quantum Feature Mapping & Variational Ansatz',
+      pipeline: 'QUANTUM ENCODING'
     },
     {
       activeNode: 3,
-      phase: 'STAGE 06',
-      status: '6. Classical Benchmarking: SVM, RF, XGBoost',
-      pipeline: 'EMPIRICAL BENCHMARK'
+      phase: 'STAGE 04',
+      status: '4. Classical Benchmarking (SVM, RF, XGBoost)',
+      pipeline: 'BENCHMARKING'
     },
     {
       activeNode: 4,
-      phase: 'STAGE 07',
-      status: '7. SHAP Attribution: Feature Importance',
+      phase: 'STAGE 05',
+      status: '5. SHAP Explainability & Biomarker Attribution',
       pipeline: 'EXPLAINABILITY'
     },
     {
       activeNode: 5,
-      phase: 'STAGE 08',
-      status: '8. Calibrated Risk Stratification & Tiers',
-      pipeline: 'DECISION SUPPORT'
+      phase: 'STAGE 06',
+      status: '6. Calibrated Disease Risk Stratification & Tiers',
+      pipeline: 'RISK ASSESSMENT'
     },
     {
       activeNode: 6,
-      phase: 'STAGE 09',
-      status: '9. System Synchronized: Continuous Biological Loop',
-      pipeline: 'SYSTEM SYNCHRONIZED'
+      phase: 'STAGE 07',
+      status: '7. Molecular Docking & Target Validation',
+      pipeline: 'HYBRID MODEL'
     }
   ];
 
@@ -413,7 +401,7 @@ function initHeroMotion() {
     circle.setAttribute('cx', '260');
     circle.setAttribute('cy', '260');
     circle.setAttribute('r', '3');
-    circle.setAttribute('fill', '#2563EB');
+    circle.setAttribute('fill', '#059669');
     circle.setAttribute('filter', 'url(#glow-filter)');
     photonsGroup.appendChild(circle);
 
@@ -463,9 +451,11 @@ function initHeroMotion() {
       isUserHovering = true;
       nodes.forEach(n => n.classList.remove('active-stage'));
       node.classList.add('active-stage');
-      const step = sequenceSteps.find(s => s.activeNode === idx) || sequenceSteps[0];
+      currentStepIdx = idx;
+      const step = sequenceSteps[idx];
       if (monitorVal) monitorVal.textContent = step.status;
-      if (activePhaseLabel) activePhaseLabel.textContent = `INSPECTING`;
+      if (activePhaseLabel) activePhaseLabel.textContent = step.phase;
+      if (pipelineStatusText) pipelineStatusText.textContent = step.pipeline;
     });
 
     node.addEventListener('mouseleave', () => {
